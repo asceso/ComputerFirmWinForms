@@ -4,6 +4,7 @@ using CoreClient.InjectingCores.MessagingCore.MessageBox;
 using CoreClient.InjectingCores.SettingsCore;
 using CoreClient.StyleExtensions.Animation;
 using MainClient.Properties;
+using MainClient.Services;
 using Ninject;
 
 namespace MainClient.Forms
@@ -42,6 +43,14 @@ namespace MainClient.Forms
         }
         private void AuthorizeButtonClick(object sender, EventArgs e)
         {
+            try
+            {
+                var user = UsersService.GetUserByLogin(LoginTE.Value);
+            }
+            catch (Exception ex)
+            {
+                message.ShowInfo(ex.Message);
+            }
             //ShellForm shell = new ShellForm();
             //shell.Show();
         }

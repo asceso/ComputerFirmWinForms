@@ -44,7 +44,7 @@
             this.OKButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OKButton.Font = new System.Drawing.Font("Fira Code", 9.749999F, System.Drawing.FontStyle.Bold);
             this.OKButton.ForeColor = System.Drawing.Color.Black;
-            this.OKButton.Location = new System.Drawing.Point(126, 105);
+            this.OKButton.Location = new System.Drawing.Point(126, 150);
             this.OKButton.Name = "OKButton";
             this.OKButton.RippleColor = System.Drawing.Color.Black;
             this.OKButton.RoundingEnable = true;
@@ -61,7 +61,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(350, 135);
+            this.ClientSize = new System.Drawing.Size(350, 180);
             this.Controls.Add(this.OKButton);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MessageInjectForm";

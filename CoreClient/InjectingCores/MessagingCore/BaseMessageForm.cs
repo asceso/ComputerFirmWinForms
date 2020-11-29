@@ -1,4 +1,5 @@
-﻿using System.Media;
+﻿using System.Drawing;
+using System.Media;
 using System.Windows.Forms;
 
 namespace CoreClient.InjectingCores.MessagingCore.MessageBox

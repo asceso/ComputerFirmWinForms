@@ -14,12 +14,12 @@ namespace EFCore.Entities
         [Required]
         public string Password { get; set; }
 
-        [ForeignKey("UserInfo")]
-        public Guid? UserInfoID { get; set; }
+        [ForeignKey("UserInfoID")]
         public UserInfo UserInfo { get; set; }
+        public Guid? UserInfoID { get; set; }
 
-        [ForeignKey("Position")]
-        public Guid PositionID { get; set; }
+        [ForeignKey("PositionID")]
         public Position Position { get; set; }
+        public Guid PositionID { get; set; }
     }
 }

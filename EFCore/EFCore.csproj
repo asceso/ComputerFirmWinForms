@@ -27,6 +27,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,9 +73,9 @@
     <Compile Include="Entities\Permission.cs" />
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\PositionPermission.cs" />
-    <Compile Include="Migrations\202011290024077_InitialCreate.cs" />
-    <Compile Include="Migrations\202011290024077_InitialCreate.Designer.cs">
-      <DependentUpon>202011290024077_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202011291902104_InitData.cs" />
+    <Compile Include="Migrations\202011291902104_InitData.Designer.cs">
+      <DependentUpon>202011291902104_InitData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,12 +109,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011290024077_InitialCreate.resx">
-      <DependentUpon>202011290024077_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011291902104_InitData.resx">
+      <DependentUpon>202011291902104_InitData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\202011290024077_InitialCreate.sql" />
+    <Content Include="Scripts\202011291902104_InitData.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

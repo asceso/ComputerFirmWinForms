@@ -18,6 +18,17 @@ namespace EFCore
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<User>()
+            //    .HasOptional(u => u.UserInfo)
+            //    .WithOptionalDependent(k => k.User)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<User>()
+            //    .HasRequired(u => u.Position)
+            //    .WithRequiredPrincipal(p => p.User)
+            //    .WillCascadeOnDelete(false);
+
+            //base.OnModelCreating(modelBuilder);
         }
     }
 }

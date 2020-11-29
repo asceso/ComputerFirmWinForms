@@ -33,6 +33,9 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -49,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InjectingCores\MapperCore\IMapperInject.cs" />
+    <Compile Include="InjectingCores\MapperCore\MapperMethods.cs" />
     <Compile Include="InjectingCores\MessagingCore\BaseMessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +81,11 @@
     <Compile Include="InjectingCores\SettingsCore\ISettingsInject.cs" />
     <Compile Include="InjectingCores\SettingsCore\SettingsMethods.cs" />
     <Compile Include="InjectingCores\SettingsCore\Models\SettingsModel.cs" />
+    <Compile Include="ShellModels\PermissionModel.cs" />
+    <Compile Include="ShellModels\PositionModel.cs" />
+    <Compile Include="ShellModels\PositionPermissionModel.cs" />
+    <Compile Include="ShellModels\UserInfoModel.cs" />
+    <Compile Include="ShellModels\UserModel.cs" />
     <Compile Include="StyleExtensions\Animation\AnimationClass.cs" />
     <Compile Include="StyleExtensions\Animation\AnimatorClass.cs" />
     <Compile Include="StyleExtensions\Components\RoundButtonComponent.cs">
@@ -102,6 +112,9 @@
     <EmbeddedResource Include="ControlExtensions\TextEditControl.resx">
       <DependentUpon>TextEditControl.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InjectingCores\MapperCore\Profiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

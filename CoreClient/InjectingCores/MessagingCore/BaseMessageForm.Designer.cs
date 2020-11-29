@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Caption = new System.Windows.Forms.Label();
-            this.Message = new System.Windows.Forms.Label();
+            this.Message = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Caption
@@ -47,14 +47,16 @@
             // 
             // Message
             // 
+            this.Message.BackColor = System.Drawing.SystemColors.Desktop;
+            this.Message.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Message.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Message.Font = new System.Drawing.Font("Fira Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Message.ForeColor = System.Drawing.SystemColors.Control;
+            this.Message.ForeColor = System.Drawing.SystemColors.Info;
             this.Message.Location = new System.Drawing.Point(0, 25);
-            this.Message.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.Message.Name = "Message";
-            this.Message.Size = new System.Drawing.Size(350, 78);
-            this.Message.TabIndex = 4;
+            this.Message.ReadOnly = true;
+            this.Message.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.Message.Size = new System.Drawing.Size(350, 120);
+            this.Message.TabIndex = 6;
             this.Message.Text = "msg";
             // 
             // BaseMessageForm
@@ -62,7 +64,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(350, 135);
+            this.ClientSize = new System.Drawing.Size(350, 180);
             this.Controls.Add(this.Message);
             this.Controls.Add(this.Caption);
             this.Font = new System.Drawing.Font("Fira Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -79,6 +81,6 @@
         #endregion
 
         private System.Windows.Forms.Label Caption;
-        private System.Windows.Forms.Label Message;
+        private System.Windows.Forms.RichTextBox Message;
     }
 }

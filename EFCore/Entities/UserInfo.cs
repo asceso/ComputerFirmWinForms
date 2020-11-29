@@ -9,6 +9,7 @@ namespace EFCore.Entities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
+
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }

@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
+using CoreClient.InjectingCores.MessagingCore.MessageBox;
+using CoreClient.InjectingCores.SettingsCore;
 using MainClient.Forms;
+using Ninject;
 
 namespace MainClient
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShellForm());
+
+            StandardKernel Kernel = new StandardKernel();
+            Kernel.Bind<ISettingsInject>().To<SettingsMethods>();
+            Kernel.Bind<IMessageInject>().To<MessageInjectForm>();
+
+            AuthForm BootstrapForm = Kernel.Get<AuthForm>();
+
+            Application.Run(BootstrapForm);
         }
     }
 }

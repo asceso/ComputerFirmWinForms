@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,10 +30,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +49,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InjectingCores\MessagingCore\BaseMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InjectingCores\MessagingCore\BaseMessageForm.Designer.cs">
+      <DependentUpon>BaseMessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InjectingCores\MessagingCore\MessageBox\IMessageInject.cs" />
+    <Compile Include="InjectingCores\MessagingCore\MessageBox\MessageInjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InjectingCores\MessagingCore\MessageBox\MessageInjectForm.Designer.cs">
+      <DependentUpon>MessageInjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlExtensions\BooleanExtension.cs" />
+    <Compile Include="ControlExtensions\ImageExtension.cs" />
+    <Compile Include="ControlExtensions\ObjectExtension.cs" />
+    <Compile Include="ControlExtensions\TextEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlExtensions\TextEditControl.Designer.cs">
+      <DependentUpon>TextEditControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InjectingCores\SettingsCore\Models\ConnectionStringModel.cs" />
+    <Compile Include="InjectingCores\SettingsCore\ISettingsInject.cs" />
+    <Compile Include="InjectingCores\SettingsCore\SettingsMethods.cs" />
+    <Compile Include="InjectingCores\SettingsCore\Models\SettingsModel.cs" />
+    <Compile Include="StyleExtensions\Animation\AnimationClass.cs" />
+    <Compile Include="StyleExtensions\Animation\AnimatorClass.cs" />
+    <Compile Include="StyleExtensions\Components\RoundButtonComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StyleExtensions\Components\RoundButtonComponent.Designer.cs">
+      <DependentUpon>RoundButtonComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StyleExtensions\Controls\BaseStyledButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StyleExtensions\Drawer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="InjectingCores\MessagingCore\BaseMessageForm.resx">
+      <DependentUpon>BaseMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InjectingCores\MessagingCore\MessageBox\MessageInjectForm.resx">
+      <DependentUpon>MessageInjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtensions\TextEditControl.resx">
+      <DependentUpon>TextEditControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

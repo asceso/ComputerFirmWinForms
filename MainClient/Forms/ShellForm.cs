@@ -4,9 +4,7 @@ namespace MainClient.Forms
 {
     public partial class ShellForm : Form
     {
-        public ShellForm()
-        {
-            InitializeComponent();
-        }
+        //internal readonly SettingsModel settings;
+        public ShellForm() => InitializeComponent();//settings = SettingsMethods.ReadConfig();
     }
 }

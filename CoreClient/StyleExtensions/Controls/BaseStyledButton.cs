@@ -112,21 +112,19 @@ namespace CoreClient.StyleExtensions.Controls
 
             Size = new Size(100, 30);
 
-            Font = new Font("Fira Code", 9.749999F, FontStyle.Bold);
+            BackColor = FormBrushes.ButtonBackgroundColor;
+            BackColorAdditional = FormBrushes.ButtonBackgroundAdditionalColor;
+            ForeColor = FormBrushes.ButtonForegroundColor;
+
+            UseRippleEffect = FormBrushes.ButtonDefaultUseRippleEffect;
+            UseDownPressEffectOnClick = FormBrushes.ButtonDefaultUseDownPressEffectOnClick;
+            UseZoomEffectOnHover = FormBrushes.ButtonDefaultUseZoomEffectOnHover;
+
+            RoundingEnable = FormBrushes.ButtonDefaultRounded;
+            Rounding = FormBrushes.ButtonDefaultRounding;
 
             Cursor = Cursors.Hand;
-
-            BackColor = Color.Tomato;
-            BackColorAdditional = Color.Gray;
             BorderColor = BackColor;
-            ForeColor = Color.Black;
-
-            UseRippleEffect = true;
-            UseDownPressEffectOnClick = false;
-            UseZoomEffectOnHover = false;
-
-            RoundingEnable = true;
-            Rounding = 100;
 
             SF.Alignment = StringAlignment.Center;
             SF.LineAlignment = StringAlignment.Center;

@@ -1,0 +1,1 @@
+﻿DELETE FROM [User] WHERE [User].[ID] = @ID;

@@ -47,10 +47,8 @@
             // 
             // Message
             // 
-            this.Message.BackColor = System.Drawing.SystemColors.Desktop;
             this.Message.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Message.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Message.ForeColor = System.Drawing.SystemColors.Info;
             this.Message.Location = new System.Drawing.Point(0, 25);
             this.Message.Name = "Message";
             this.Message.ReadOnly = true;
@@ -63,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(350, 180);
             this.Controls.Add(this.Message);
             this.Controls.Add(this.Caption);

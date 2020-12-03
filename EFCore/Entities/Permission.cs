@@ -7,7 +7,7 @@ namespace EFCore.Entities
     [Table("Permissions")]
     public partial class Permission
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

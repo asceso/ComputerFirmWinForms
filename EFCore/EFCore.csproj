@@ -49,6 +49,26 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -76,6 +96,10 @@
     <Compile Include="Migrations\202011291902104_InitData.cs" />
     <Compile Include="Migrations\202011291902104_InitData.Designer.cs">
       <DependentUpon>202011291902104_InitData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011301732488_DeleteKeyGenerated.cs" />
+    <Compile Include="Migrations\202011301732488_DeleteKeyGenerated.Designer.cs">
+      <DependentUpon>202011301732488_DeleteKeyGenerated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,9 +136,13 @@
     <EmbeddedResource Include="Migrations\202011291902104_InitData.resx">
       <DependentUpon>202011291902104_InitData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011301732488_DeleteKeyGenerated.resx">
+      <DependentUpon>202011301732488_DeleteKeyGenerated.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\202011291902104_InitData.sql" />
+    <Content Include="Scripts\202011301732488_DeleteKeyGenerated.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

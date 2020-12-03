@@ -22,10 +22,23 @@ namespace WCFCore.ServiceContracts
         UserDataContract InsertUser(UserDataContract user);
 
         [OperationContract]
-        int UpdateUser(UserDataContract user);
+        UserDataContract UpdateUser(UserDataContract user);
 
         [OperationContract]
         int DeleteUser(UserDataContract user);
+        #endregion
+        #region user infos
+        [OperationContract]
+        UserInfoDataContract GetUserInfoByID(Guid ID);
+
+        [OperationContract]
+        UserInfoDataContract InsertUserInfo(UserInfoDataContract userInfo);
+
+        [OperationContract]
+        UserInfoDataContract UpdateUserInfo(UserInfoDataContract userInfo);
+
+        [OperationContract]
+        int DeleteUserInfo(UserInfoDataContract userInfo);
         #endregion
         #region positions
         [OperationContract]
@@ -41,7 +54,7 @@ namespace WCFCore.ServiceContracts
         PositionDataContract InsertPosition(PositionDataContract position);
 
         [OperationContract]
-        int UpdatePosition(PositionDataContract position);
+        PositionDataContract UpdatePosition(PositionDataContract position);
 
         [OperationContract]
         int DeletePosition(PositionDataContract position);
@@ -49,6 +62,8 @@ namespace WCFCore.ServiceContracts
         #region permissions
         [OperationContract]
         IEnumerable<PermissionDataContract> GetPermissionsCollection();
+        [OperationContract]
+        IEnumerable<PermissionDataContract> GetPermissionsCollectionByPosition(PositionDataContract position);
 
         [OperationContract]
         PermissionDataContract GetPermissionByID(Guid ID);
@@ -60,7 +75,7 @@ namespace WCFCore.ServiceContracts
         PermissionDataContract InsertPermission(PermissionDataContract permission);
 
         [OperationContract]
-        int UpdatePermission(PermissionDataContract permission);
+        PermissionDataContract UpdatePermission(PermissionDataContract permission);
 
         [OperationContract]
         int DeletePermission(PermissionDataContract permission);
@@ -73,7 +88,7 @@ namespace WCFCore.ServiceContracts
         IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID);
 
         [OperationContract]
-        int InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission);
+        PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission);
 
         [OperationContract]
         int DeletePositionPermissions(Guid ID);

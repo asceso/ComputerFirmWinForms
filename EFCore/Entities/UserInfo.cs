@@ -7,7 +7,7 @@ namespace EFCore.Entities
     [Table("UserInfos")]
     public partial class UserInfo
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ID { get; set; }
 
         public string FirstName { get; set; }

@@ -7,7 +7,7 @@ namespace EFCore.Entities
     [Table("PositionPermissions")]
     public partial class PositionPermission
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ID { get; set; }
         public Position Position { get; set; }
         public Permission Permission { get; set; }

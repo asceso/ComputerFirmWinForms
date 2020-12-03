@@ -1,0 +1,1 @@
+﻿SELECT [UserInfo].* FROM [UserInfo] WHERE [UserInfo].[ID] = @ID;

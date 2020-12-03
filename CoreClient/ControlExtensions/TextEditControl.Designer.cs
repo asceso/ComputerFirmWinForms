@@ -44,9 +44,8 @@
             // 
             // TextEditHeader
             // 
-            this.TextEditHeader.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TextEditHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TextEditHeader.Location = new System.Drawing.Point(0, 0);
-            this.TextEditHeader.MinimumSize = new System.Drawing.Size(50, 0);
             this.TextEditHeader.Name = "TextEditHeader";
             this.TextEditHeader.Size = new System.Drawing.Size(50, 25);
             this.TextEditHeader.TabIndex = 1;

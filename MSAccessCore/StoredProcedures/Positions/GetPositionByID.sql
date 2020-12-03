@@ -1,0 +1,1 @@
+﻿SELECT [Position].* FROM [Position] WHERE [Position].[ID] = @ID;

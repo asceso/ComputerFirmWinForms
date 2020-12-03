@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using CoreClient.InjectingCores.MessagingCore.MessageBox;
-using CoreClient.InjectingCores.SettingsCore;
+using InjectingCoreLibrary.MapperCore.ClientImplementation;
+using InjectingCoreLibrary.MapperCore.MemoryCacheCore;
+using InjectingCoreLibrary.MessagingCore.AskBox;
+using InjectingCoreLibrary.MessagingCore.MessageBox;
+using InjectingCoreLibrary.SettingsCore;
 using MainClient.Forms;
 using Ninject;
+using PermissionsManager;
 
 namespace MainClient
 {
@@ -19,12 +23,24 @@ namespace MainClient
             Application.SetCompatibleTextRenderingDefault(false);
 
             StandardKernel Kernel = new StandardKernel();
+
             Kernel.Bind<ISettingsInject>().To<SettingsMethods>();
             Kernel.Bind<IMessageInject>().To<MessageInjectForm>();
+            Kernel.Bind<IAskInject>().To<AskInjectForm>();
+            Kernel.Bind<IMapperInject>().To<MapperMethods>();
+            Kernel.Bind<IMemoryInject>().To<MemoryMethods>();
+            Kernel.Bind<IPermissionInject>().To<PermissionMethods>();
 
-            AuthForm BootstrapForm = Kernel.Get<AuthForm>();
+            ShellForm BootstrapForm = Kernel.Get<ShellForm>();
 
-            Application.Run(BootstrapForm);
+            try
+            {
+                Application.Run(BootstrapForm);
+            }
+            catch (Exception ex)
+            {
+                Kernel.Get<IMessageInject>().ShowInfo($"{ex.Message}, {ex.InnerException}", "Ошибка");
+            }
         }
     }
 }

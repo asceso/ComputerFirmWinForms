@@ -26,7 +26,7 @@ namespace CoreClient.ControlExtensions
         public Size MinHeaderSize
         {
             get => TextEditHeader.MinimumSize;
-            set => TextEditHeader.MinimumSize = value;
+            set => TextEditHeader.MinimumSize = new Size(value.Width, value.Height);
         }
 
         [Category("Настраиваемые аттрибуты")]
@@ -36,7 +36,7 @@ namespace CoreClient.ControlExtensions
         public Size HeaderSize
         {
             get => TextEditHeader.Size;
-            set => TextEditHeader.Size = value;
+            set => TextEditHeader.Size = new Size(value.Width, value.Height);
         }
         #endregion header
         #region value

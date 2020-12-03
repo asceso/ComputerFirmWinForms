@@ -1,0 +1,1 @@
+﻿INSERT INTO [UserInfo] VALUES (@ID, @FirstName, @SecondName, @LastName, @ContactNumber);

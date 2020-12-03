@@ -1,0 +1,1 @@
+﻿DELETE FROM [Position] WHERE [Position].[ID] = @ID;

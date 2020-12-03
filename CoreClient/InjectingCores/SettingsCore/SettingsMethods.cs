@@ -9,9 +9,15 @@ namespace CoreClient.InjectingCores.SettingsCore
     {
         private readonly string JsonPath = Environment.CurrentDirectory + "\\AppSettings.json";
         private readonly SettingsModel settings;
-        public SettingsMethods() => settings = ReadConfig();
-        public string GetConnectionString() => settings.ConnectionString.GetConnectionString();
 
+        //ctor
+        public SettingsMethods() => settings = ReadConfig();
+
+        //short methods
+        public string GetConnectionString() => settings.ConnectionString.GetConnectionString();
+        public string GetServiceName() => settings.ServiceAddress;
+
+        //get set conf
         public SettingsModel ReadConfig()
         {
             string buffer = string.Empty;
@@ -27,7 +33,6 @@ namespace CoreClient.InjectingCores.SettingsCore
             SettingsModel settings = JsonConvert.DeserializeObject<SettingsModel>(buffer);
             return settings;
         }
-
         public bool SetConfig(SettingsModel settings)
         {
             try

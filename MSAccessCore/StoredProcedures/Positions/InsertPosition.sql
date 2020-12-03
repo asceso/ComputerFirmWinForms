@@ -1,0 +1,1 @@
+﻿INSERT INTO [Position] VALUES (@ID, @Name, @Description);

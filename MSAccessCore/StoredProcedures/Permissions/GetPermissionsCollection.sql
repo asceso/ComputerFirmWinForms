@@ -1,0 +1,1 @@
+﻿SELECT [Permission].* FROM [Permission];

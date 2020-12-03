@@ -1,4 +1,5 @@
 ﻿using CoreClient.ControlExtensions;
+using CoreClient.StyleExtensions;
 
 namespace CoreClient.InjectingCores.MessagingCore.MessageBox
 {
@@ -7,6 +8,7 @@ namespace CoreClient.InjectingCores.MessagingCore.MessageBox
         public MessageInjectForm()
         {
             InitializeComponent();
+            OKButton.SetDefaultColor();
             OKButton.Click += OKButtonClick;
         }
         private void OKButtonClick(object sender, System.EventArgs e) => Hide();
@@ -15,7 +17,7 @@ namespace CoreClient.InjectingCores.MessagingCore.MessageBox
             CaptionString = caption.IsNull() ? "Внимание" : caption;
             PlaySound(DefaultBackgroundSound);
             MessageString = message;
-            Show();
+            ShowDialog();
         }
     }
 }

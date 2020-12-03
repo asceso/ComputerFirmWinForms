@@ -1,0 +1,1 @@
+﻿DELETE FROM [UserInfo] WHERE [UserInfo].[ID] = @ID;

@@ -42,14 +42,13 @@
             this.OKButton.BorderColorOnHover = System.Drawing.Color.Tomato;
             this.OKButton.BorderColorOnHoverEnabled = false;
             this.OKButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OKButton.Font = new System.Drawing.Font("Fira Code", 9.749999F, System.Drawing.FontStyle.Bold);
             this.OKButton.ForeColor = System.Drawing.Color.Black;
-            this.OKButton.Location = new System.Drawing.Point(126, 150);
+            this.OKButton.Location = new System.Drawing.Point(108, 123);
             this.OKButton.Name = "OKButton";
             this.OKButton.RippleColor = System.Drawing.Color.Black;
             this.OKButton.RoundingEnable = true;
             this.OKButton.Size = new System.Drawing.Size(100, 25);
-            this.OKButton.TabIndex = 5;
+            this.OKButton.TabIndex = 7;
             this.OKButton.Text = "OK";
             this.OKButton.TextHover = null;
             this.OKButton.UseDownPressEffectOnClick = false;
@@ -58,12 +57,11 @@
             // 
             // MessageInjectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(350, 180);
+            this.ClientSize = new System.Drawing.Size(311, 150);
             this.Controls.Add(this.OKButton);
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MessageInjectForm";
             this.Text = "MessageInjectForm";
             this.Controls.SetChildIndex(this.OKButton, 0);

@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using CoreClient.ShellModels;
+﻿using ApplicationModels;
+using AutoMapper;
 using WCFCore.DataContracts;
 
 namespace InjectingCoreLibrary.MapperCore.Profiles

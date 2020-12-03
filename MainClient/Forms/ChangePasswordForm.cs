@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using CoreClient.ShellModels;
+using ApplicationModels;
 using CoreClient.StyleExtensions;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
 

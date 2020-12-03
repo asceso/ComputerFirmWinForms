@@ -45,11 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessConnector.cs" />
+    <Compile Include="AccessDataModels\BaseRequestAD.cs" />
+    <Compile Include="AccessDataModels\ClientAD.cs" />
+    <Compile Include="AccessDataModels\ComputerAD.cs" />
+    <Compile Include="AccessDataModels\MountingRequestAD.cs" />
     <Compile Include="AccessDataModels\PermissionAD.cs" />
     <Compile Include="AccessDataModels\PositionAD.cs" />
     <Compile Include="AccessDataModels\PositionPermissionAD.cs" />
+    <Compile Include="AccessDataModels\PriceListAD.cs" />
+    <Compile Include="AccessDataModels\RepairsRequestAD.cs" />
+    <Compile Include="AccessDataModels\RequestTypeAD.cs" />
+    <Compile Include="AccessDataModels\SaleAD.cs" />
     <Compile Include="AccessDataModels\UserAD.cs" />
     <Compile Include="AccessDataModels\UserInfoAD.cs" />
+    <Compile Include="AccessDataModels\WarehouseAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

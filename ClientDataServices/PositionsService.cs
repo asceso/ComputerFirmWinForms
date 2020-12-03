@@ -7,11 +7,43 @@ namespace ClientDataServices
 {
     public static class PositionsService
     {
+        /// <summary>
+        /// Получить список должностей
+        /// </summary>
+        /// <returns>IEnumerable должностей</returns>
         public static async Task<IEnumerable<PositionDataContract>> GetPositionsCollection()
             => await TunellProxy.UseTunellProxy(client => client.GetPositionsCollection());
+
+        /// <summary>
+        /// Первая должность по вводимому имени
+        /// </summary>
+        /// <param name="name">Имя должности</param>
+        /// <returns>Модель должности</returns>
         public static async Task<PositionDataContract> GetFirstPositionByName(string name)
             => await TunellProxy.UseTunellProxy(client => client.GetFirstPositionByName(name));
+
+        /// <summary>
+        /// Добавить должность
+        /// </summary>
+        /// <param name="position">Должность</param>
+        /// <returns>Добавленная должность</returns>
         public static async Task<PositionDataContract> InsertPosition(PositionDataContract position)
             => await TunellProxy.UseTunellProxy(client => client.InsertPosition(position));
+
+        /// <summary>
+        /// Изменить должность
+        /// </summary>
+        /// <param name="position">должность</param>
+        /// <returns>Измененнная должность</returns>
+        public static async Task<PositionDataContract> UpdatePosition(PositionDataContract position)
+            => await TunellProxy.UseTunellProxy(client => client.UpdatePosition(position));
+
+        /// <summary>
+        /// Удалить должность
+        /// </summary>
+        /// <param name="position">должность</param>
+        /// <returns>кол-во удаленных должностей</returns>
+        public static async Task<int> DeletePosition(PositionDataContract position)
+            => await TunellProxy.UseTunellProxy(client => client.DeletePosition(position));
     }
 }

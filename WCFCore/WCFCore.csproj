@@ -76,11 +76,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\BaseRequestDataContract.cs" />
+    <Compile Include="DataContracts\ClientDataContract.cs" />
+    <Compile Include="DataContracts\ComputerDataContract.cs" />
+    <Compile Include="DataContracts\MountingRequestDataContract.cs" />
     <Compile Include="DataContracts\PermissionDataContract.cs" />
     <Compile Include="DataContracts\PositionDataContract.cs" />
     <Compile Include="DataContracts\PositionPermissionDataContract.cs" />
+    <Compile Include="DataContracts\PriceListDataContract.cs" />
+    <Compile Include="DataContracts\RepairsRequestDataContract.cs" />
+    <Compile Include="DataContracts\RequestTypeDataContract.cs" />
     <Compile Include="DataContracts\UserDataContract.cs" />
     <Compile Include="DataContracts\UserInfoDataContract.cs" />
+    <Compile Include="DataContracts\WarehouseDataContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContracts\IDataTransfer.cs" />
   </ItemGroup>

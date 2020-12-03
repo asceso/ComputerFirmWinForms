@@ -103,6 +103,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationModels\ApplicationModels.csproj">
+      <Project>{5569D614-C354-451F-BDD9-D3DB80D88BB3}</Project>
+      <Name>ApplicationModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CoreClient\CoreClient.csproj">
       <Project>{CB93C7A8-8862-473D-9D7B-6ADF67FF0C6C}</Project>
       <Name>CoreClient</Name>

@@ -187,6 +187,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationModels\ApplicationModels.csproj">
+      <Project>{5569D614-C354-451F-BDD9-D3DB80D88BB3}</Project>
+      <Name>ApplicationModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClientDataServices\ClientDataServices.csproj">
       <Project>{28021CE1-9035-4186-8B94-B7593F84F9B8}</Project>
       <Name>ClientDataServices</Name>

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
-using CoreClient.ShellModels;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
 using MainClient.Forms;

@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientDataServices", "Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermissionsManager", "PermissionsManager\PermissionsManager.csproj", "{53AB0D7D-E803-473C-92C7-E6A2B873A5A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationModels", "ApplicationModels\ApplicationModels.csproj", "{5569D614-C354-451F-BDD9-D3DB80D88BB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,14 @@ Global
 		{53AB0D7D-E803-473C-92C7-E6A2B873A5A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53AB0D7D-E803-473C-92C7-E6A2B873A5A9}.Release|x86.ActiveCfg = Release|Any CPU
 		{53AB0D7D-E803-473C-92C7-E6A2B873A5A9}.Release|x86.Build.0 = Release|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +155,7 @@ Global
 		{061350E6-73B2-43DD-B1A4-40A841ECDD5A} = {1074F882-4C70-4DB6-8B95-772F9C52A4AA}
 		{28021CE1-9035-4186-8B94-B7593F84F9B8} = {3E2CF4FD-85BD-4E60-A688-FB18BFDC2D42}
 		{53AB0D7D-E803-473C-92C7-E6A2B873A5A9} = {3E2CF4FD-85BD-4E60-A688-FB18BFDC2D42}
+		{5569D614-C354-451F-BDD9-D3DB80D88BB3} = {3E2CF4FD-85BD-4E60-A688-FB18BFDC2D42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F8E3AF6-CCD4-4710-9E12-A8B96778762D}

@@ -51,7 +51,7 @@ namespace WCFClient.Client
 
         #endregion
 
-        #region users
+        #region users -- Реализовано
         public IEnumerable<UserDataContract> GetUsersCollection()
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -208,7 +208,7 @@ namespace WCFClient.Client
             };
         }
         #endregion
-        #region user infos
+        #region user infos -- Реализовано
         public UserInfoDataContract GetUserInfoByID(Guid ID)
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -300,7 +300,7 @@ namespace WCFClient.Client
             };
         }
         #endregion
-        #region positions
+        #region positions -- Реализовано
         public IEnumerable<PositionDataContract> GetPositionsCollection()
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);

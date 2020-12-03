@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using ApplicationModels;
 using CoreClient.ControlExtensions;
-using CoreClient.ShellModels;
 using CoreClient.StyleExtensions;
 using CoreClient.StyleExtensions.Animation;
 using InjectingCoreLibrary.MapperCore.MemoryCacheCore;

@@ -9,7 +9,7 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
     {
         public ServerMapperProfile()
         {
-            //EF Core
+            #region EF Core
             CreateMap<UserInfo, UserInfoDataContract>();
             CreateMap<UserInfo, UserInfoDataContract>().ReverseMap();
 
@@ -24,8 +24,9 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<PositionPermission, PositionPermissionDataContract>();
             CreateMap<PositionPermission, PositionPermissionDataContract>().ReverseMap();
+            #endregion
 
-            //Access Core
+            #region Access Core
             CreateMap<UserInfoAD, UserInfoDataContract>();
             CreateMap<UserInfoAD, UserInfoDataContract>().ReverseMap();
 
@@ -40,6 +41,7 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<PositionPermissionAD, PositionPermissionDataContract>();
             CreateMap<PositionPermissionAD, PositionPermissionDataContract>().ReverseMap();
+            #endregion
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
-using CoreClient.ShellModels;
 using CoreClient.StyleExtensions;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MapperCore.MemoryCacheCore;

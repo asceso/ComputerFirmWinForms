@@ -1,4 +1,4 @@
-﻿using CoreClient.ShellModels;
+﻿using ApplicationModels;
 using Ninject;
 
 namespace PermissionsManager

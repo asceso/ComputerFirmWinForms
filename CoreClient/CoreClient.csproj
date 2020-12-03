@@ -93,11 +93,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ShellModels\PermissionModel.cs" />
-    <Compile Include="ShellModels\PositionModel.cs" />
-    <Compile Include="ShellModels\PositionPermissionModel.cs" />
-    <Compile Include="ShellModels\UserInfoModel.cs" />
-    <Compile Include="ShellModels\UserModel.cs" />
     <Compile Include="StyleExtensions\Animation\AnimationClass.cs" />
     <Compile Include="StyleExtensions\Animation\AnimatorClass.cs" />
     <Compile Include="StyleExtensions\Components\RoundButtonComponent.cs">

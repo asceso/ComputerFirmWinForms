@@ -33,14 +33,17 @@ namespace WCFServer
 
             Uri baseAddress = new Uri("net.tcp://localhost:555//");
 
-            ServiceHost host;
+            ServiceHost host = null;
             if (UseMSAccess.ToBool())
             {
                 host = new ServiceHost(typeof(WCFAccessContext), baseAddress);
             }
             else
             {
-                host = new ServiceHost(typeof(WCFDataContext), baseAddress);
+                Console.WriteLine("На время разработки EF не используется. В связи с этим пришлось его выключить. Сервер завершит работу после нажатия любой кнопки");
+                Console.ReadKey();
+                Environment.Exit(0);
+                //host = new ServiceHost(typeof(WCFDataContext), baseAddress);
             }
 
             try

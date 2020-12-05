@@ -30,11 +30,17 @@
         {
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonsPanel = new System.Windows.Forms.Panel();
-            this.ClientsTopMargin = new System.Windows.Forms.Label();
-            this.UserTopMargin = new System.Windows.Forms.Label();
-            this.ContentTabControl = new System.Windows.Forms.TabControl();
             this.ClientsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.ClientsTopMargin = new System.Windows.Forms.Label();
+            this.PositionsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.PositionTopMargin = new System.Windows.Forms.Label();
             this.UsersButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.UserTopMargin = new System.Windows.Forms.Label();
+            this.SettingsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.SettingsTopMargin = new System.Windows.Forms.Label();
+            this.ContentTabControl = new System.Windows.Forms.TabControl();
+            this.RequestTypesButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.RequestTypesTopMargin = new System.Windows.Forms.Label();
             this.MainTable.SuspendLayout();
             this.ButtonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -58,40 +64,19 @@
             // 
             this.ButtonsPanel.Controls.Add(this.ClientsButton);
             this.ButtonsPanel.Controls.Add(this.ClientsTopMargin);
+            this.ButtonsPanel.Controls.Add(this.RequestTypesButton);
+            this.ButtonsPanel.Controls.Add(this.RequestTypesTopMargin);
+            this.ButtonsPanel.Controls.Add(this.PositionsButton);
+            this.ButtonsPanel.Controls.Add(this.PositionTopMargin);
             this.ButtonsPanel.Controls.Add(this.UsersButton);
             this.ButtonsPanel.Controls.Add(this.UserTopMargin);
+            this.ButtonsPanel.Controls.Add(this.SettingsButton);
+            this.ButtonsPanel.Controls.Add(this.SettingsTopMargin);
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonsPanel.Location = new System.Drawing.Point(3, 3);
             this.ButtonsPanel.Name = "ButtonsPanel";
             this.ButtonsPanel.Size = new System.Drawing.Size(144, 444);
             this.ButtonsPanel.TabIndex = 0;
-            // 
-            // ClientsTopMargin
-            // 
-            this.ClientsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ClientsTopMargin.Location = new System.Drawing.Point(0, 40);
-            this.ClientsTopMargin.Name = "ClientsTopMargin";
-            this.ClientsTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.ClientsTopMargin.TabIndex = 3;
-            this.ClientsTopMargin.Tag = "Margin";
-            // 
-            // UserTopMargin
-            // 
-            this.UserTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UserTopMargin.Location = new System.Drawing.Point(0, 0);
-            this.UserTopMargin.Name = "UserTopMargin";
-            this.UserTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.UserTopMargin.TabIndex = 2;
-            this.UserTopMargin.Tag = "Margin";
-            // 
-            // ContentTabControl
-            // 
-            this.ContentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentTabControl.Location = new System.Drawing.Point(153, 3);
-            this.ContentTabControl.Name = "ContentTabControl";
-            this.ContentTabControl.SelectedIndex = 0;
-            this.ContentTabControl.Size = new System.Drawing.Size(644, 444);
-            this.ContentTabControl.TabIndex = 1;
             // 
             // ClientsButton
             // 
@@ -106,7 +91,7 @@
             this.ClientsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ClientsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.ClientsButton.ForeColor = System.Drawing.Color.Black;
-            this.ClientsButton.Location = new System.Drawing.Point(0, 50);
+            this.ClientsButton.Location = new System.Drawing.Point(0, 170);
             this.ClientsButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.ClientsButton.Name = "ClientsButton";
             this.ClientsButton.RippleColor = System.Drawing.Color.Black;
@@ -118,7 +103,49 @@
             this.ClientsButton.UseDownPressEffectOnClick = false;
             this.ClientsButton.UseRippleEffect = true;
             this.ClientsButton.UseZoomEffectOnHover = false;
-            this.ClientsButton.Click += new System.EventHandler(this.ClientsButtonClick);
+            // 
+            // ClientsTopMargin
+            // 
+            this.ClientsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ClientsTopMargin.Location = new System.Drawing.Point(0, 160);
+            this.ClientsTopMargin.Name = "ClientsTopMargin";
+            this.ClientsTopMargin.Size = new System.Drawing.Size(144, 10);
+            this.ClientsTopMargin.TabIndex = 3;
+            this.ClientsTopMargin.Tag = "Margin";
+            // 
+            // PositionsButton
+            // 
+            this.PositionsButton.BackColor = System.Drawing.Color.Tomato;
+            this.PositionsButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.PositionsButton.BackColorGradientEnabled = false;
+            this.PositionsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.PositionsButton.BorderColor = System.Drawing.Color.Tomato;
+            this.PositionsButton.BorderColorEnabled = false;
+            this.PositionsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.PositionsButton.BorderColorOnHoverEnabled = false;
+            this.PositionsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PositionsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PositionsButton.ForeColor = System.Drawing.Color.Black;
+            this.PositionsButton.Location = new System.Drawing.Point(0, 90);
+            this.PositionsButton.Name = "PositionsButton";
+            this.PositionsButton.RippleColor = System.Drawing.Color.Black;
+            this.PositionsButton.RoundingEnable = true;
+            this.PositionsButton.Size = new System.Drawing.Size(144, 30);
+            this.PositionsButton.TabIndex = 6;
+            this.PositionsButton.Text = "Должности";
+            this.PositionsButton.TextHover = null;
+            this.PositionsButton.UseDownPressEffectOnClick = false;
+            this.PositionsButton.UseRippleEffect = true;
+            this.PositionsButton.UseZoomEffectOnHover = false;
+            // 
+            // PositionTopMargin
+            // 
+            this.PositionTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PositionTopMargin.Location = new System.Drawing.Point(0, 80);
+            this.PositionTopMargin.Name = "PositionTopMargin";
+            this.PositionTopMargin.Size = new System.Drawing.Size(144, 10);
+            this.PositionTopMargin.TabIndex = 7;
+            this.PositionTopMargin.Tag = "Margin";
             // 
             // UsersButton
             // 
@@ -133,7 +160,7 @@
             this.UsersButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UsersButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.UsersButton.ForeColor = System.Drawing.Color.Black;
-            this.UsersButton.Location = new System.Drawing.Point(0, 10);
+            this.UsersButton.Location = new System.Drawing.Point(0, 50);
             this.UsersButton.Name = "UsersButton";
             this.UsersButton.RippleColor = System.Drawing.Color.Black;
             this.UsersButton.RoundingEnable = true;
@@ -144,7 +171,92 @@
             this.UsersButton.UseDownPressEffectOnClick = false;
             this.UsersButton.UseRippleEffect = true;
             this.UsersButton.UseZoomEffectOnHover = false;
-            this.UsersButton.Click += new System.EventHandler(this.UsersButtonClick);
+            // 
+            // UserTopMargin
+            // 
+            this.UserTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UserTopMargin.Location = new System.Drawing.Point(0, 40);
+            this.UserTopMargin.Name = "UserTopMargin";
+            this.UserTopMargin.Size = new System.Drawing.Size(144, 10);
+            this.UserTopMargin.TabIndex = 2;
+            this.UserTopMargin.Tag = "Margin";
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.BackColor = System.Drawing.Color.Tomato;
+            this.SettingsButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.SettingsButton.BackColorGradientEnabled = false;
+            this.SettingsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.SettingsButton.BorderColor = System.Drawing.Color.Tomato;
+            this.SettingsButton.BorderColorEnabled = false;
+            this.SettingsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.SettingsButton.BorderColorOnHoverEnabled = false;
+            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SettingsButton.ForeColor = System.Drawing.Color.Black;
+            this.SettingsButton.Location = new System.Drawing.Point(0, 10);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.RippleColor = System.Drawing.Color.Black;
+            this.SettingsButton.RoundingEnable = true;
+            this.SettingsButton.Size = new System.Drawing.Size(144, 30);
+            this.SettingsButton.TabIndex = 4;
+            this.SettingsButton.Text = "Настройки";
+            this.SettingsButton.TextHover = null;
+            this.SettingsButton.UseDownPressEffectOnClick = false;
+            this.SettingsButton.UseRippleEffect = true;
+            this.SettingsButton.UseZoomEffectOnHover = false;
+            // 
+            // SettingsTopMargin
+            // 
+            this.SettingsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SettingsTopMargin.Location = new System.Drawing.Point(0, 0);
+            this.SettingsTopMargin.Name = "SettingsTopMargin";
+            this.SettingsTopMargin.Size = new System.Drawing.Size(144, 10);
+            this.SettingsTopMargin.TabIndex = 5;
+            this.SettingsTopMargin.Tag = "Margin";
+            // 
+            // ContentTabControl
+            // 
+            this.ContentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContentTabControl.Location = new System.Drawing.Point(153, 3);
+            this.ContentTabControl.Name = "ContentTabControl";
+            this.ContentTabControl.SelectedIndex = 0;
+            this.ContentTabControl.Size = new System.Drawing.Size(644, 444);
+            this.ContentTabControl.TabIndex = 1;
+            // 
+            // RequestTypesButton
+            // 
+            this.RequestTypesButton.BackColor = System.Drawing.Color.Tomato;
+            this.RequestTypesButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.RequestTypesButton.BackColorGradientEnabled = false;
+            this.RequestTypesButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.RequestTypesButton.BorderColor = System.Drawing.Color.Tomato;
+            this.RequestTypesButton.BorderColorEnabled = false;
+            this.RequestTypesButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.RequestTypesButton.BorderColorOnHoverEnabled = false;
+            this.RequestTypesButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RequestTypesButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RequestTypesButton.ForeColor = System.Drawing.Color.Black;
+            this.RequestTypesButton.Location = new System.Drawing.Point(0, 130);
+            this.RequestTypesButton.Name = "RequestTypesButton";
+            this.RequestTypesButton.RippleColor = System.Drawing.Color.Black;
+            this.RequestTypesButton.RoundingEnable = true;
+            this.RequestTypesButton.Size = new System.Drawing.Size(144, 30);
+            this.RequestTypesButton.TabIndex = 8;
+            this.RequestTypesButton.Text = "Типы заявок";
+            this.RequestTypesButton.TextHover = null;
+            this.RequestTypesButton.UseDownPressEffectOnClick = false;
+            this.RequestTypesButton.UseRippleEffect = true;
+            this.RequestTypesButton.UseZoomEffectOnHover = false;
+            // 
+            // RequestTypesTopMargin
+            // 
+            this.RequestTypesTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RequestTypesTopMargin.Location = new System.Drawing.Point(0, 120);
+            this.RequestTypesTopMargin.Name = "RequestTypesTopMargin";
+            this.RequestTypesTopMargin.Size = new System.Drawing.Size(144, 10);
+            this.RequestTypesTopMargin.TabIndex = 9;
+            this.RequestTypesTopMargin.Tag = "Margin";
             // 
             // ShellForm
             // 
@@ -170,5 +282,11 @@
         private System.Windows.Forms.Label UserTopMargin;
         private CoreClient.StyleExtensions.Controls.BaseStyledButton UsersButton;
         private System.Windows.Forms.Label ClientsTopMargin;
+        private CoreClient.StyleExtensions.Controls.BaseStyledButton SettingsButton;
+        private System.Windows.Forms.Label SettingsTopMargin;
+        private CoreClient.StyleExtensions.Controls.BaseStyledButton PositionsButton;
+        private System.Windows.Forms.Label PositionTopMargin;
+        private CoreClient.StyleExtensions.Controls.BaseStyledButton RequestTypesButton;
+        private System.Windows.Forms.Label RequestTypesTopMargin;
     }
 }

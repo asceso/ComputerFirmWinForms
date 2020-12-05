@@ -9,6 +9,7 @@ namespace WCFCore.ServiceContracts
     public interface IDataTransfer
     {
         #region users
+
         [OperationContract]
         IEnumerable<UserDataContract> GetUsersCollection();
 
@@ -26,8 +27,10 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeleteUser(UserDataContract user);
+
         #endregion
         #region user infos
+
         [OperationContract]
         UserInfoDataContract GetUserInfoByID(Guid ID);
 
@@ -39,8 +42,10 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeleteUserInfo(UserInfoDataContract userInfo);
+
         #endregion
         #region positions
+
         [OperationContract]
         IEnumerable<PositionDataContract> GetPositionsCollection();
 
@@ -58,10 +63,34 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeletePosition(PositionDataContract position);
+
+        #endregion
+        #region request types
+
+        [OperationContract]
+        IEnumerable<RequestTypeDataContract> GetRequestTypeCollection();
+
+        [OperationContract]
+        RequestTypeDataContract GetRequestTypeByID(Guid ID);
+
+        [OperationContract]
+        RequestTypeDataContract GetRequestTypeByName(string Name);
+
+        [OperationContract]
+        RequestTypeDataContract InsertRequestType(RequestTypeDataContract requestType);
+
+        [OperationContract]
+        RequestTypeDataContract UpdateRequestType(RequestTypeDataContract requestType);
+
+        [OperationContract]
+        int DeleteRequestType(RequestTypeDataContract requestType);
+
         #endregion
         #region permissions
+
         [OperationContract]
         IEnumerable<PermissionDataContract> GetPermissionsCollection();
+
         [OperationContract]
         IEnumerable<PermissionDataContract> GetPermissionsCollectionByPosition(PositionDataContract position);
 
@@ -79,8 +108,10 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeletePermission(PermissionDataContract permission);
+
         #endregion
         #region position permissions
+
         [OperationContract]
         IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection();
 
@@ -92,6 +123,7 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeletePositionPermissions(Guid ID);
+
         #endregion
     }
 }

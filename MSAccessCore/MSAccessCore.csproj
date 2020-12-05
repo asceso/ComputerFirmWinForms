@@ -69,6 +69,9 @@
     <Content Include="StoredProcedures\Permissions\GetPermissionsCollection.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="StoredProcedures\Permissions\GetPermissionByID.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="StoredProcedures\Positions\DeletePosition.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -85,6 +88,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\Positions\GetPositionsCollection.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\DeleteRequestType.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\GetRequestTypeByName.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\GetRequestTypeByID.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\GetRequestTypeCollection.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\InsertRequestType.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\RequestTypes\UpdateRequestType.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\UserInfos\DeleteUserInfo.sql">

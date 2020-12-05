@@ -13,32 +13,32 @@ using Ninject;
 using PermissionsManager;
 using WCFCore.DataContracts;
 
-namespace MainClient.UserControls.Users
+namespace MainClient.UserControls.RequestTypes
 {
-    public partial class UsersView : ContentUserControlBase
+    public partial class RequestTypesView : ContentUserControlBase
     {
         #region fucking wforms
-        public UsersView() : base() { }
+        public RequestTypesView() : base() { }
         #endregion
 
         #region Fields
 
         private readonly IMapperInject mapper;
-        private ObservableCollection<UserModel> models;
+        private ObservableCollection<RequestTypeModel> models;
 
         #endregion
         #region Props
 
-        public ObservableCollection<UserModel> Models
+        public ObservableCollection<RequestTypeModel> Models
         {
-            get => models ??= new ObservableCollection<UserModel>();
+            get => models ??= new ObservableCollection<RequestTypeModel>();
             set => models = value;
         }
 
         #endregion
         #region Ctor
 
-        public UsersView(IKernel kernel) : base(kernel)
+        public RequestTypesView(IKernel kernel) : base(kernel)
         {
             CollectionView.MultiSelect = false;
             mapper = kernel.Get<IMapperInject>();
@@ -50,10 +50,9 @@ namespace MainClient.UserControls.Users
             CollectionView.MouseDoubleClick += CollectionViewMouseDoubleClick;
             DeleteButton.Click += DeleteButtonClickAsync;
 
-            AddButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("UsersIns"));
-            EditButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("UsersUpd"));
-            DeleteButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("UsersDel"));
-            //todo: Допилить ивент аггрегатор
+            AddButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("RequestTypesIns"));
+            EditButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("RequestTypesUpd"));
+            DeleteButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("RequestTypesDel"));
         }
 
         #endregion
@@ -61,12 +60,8 @@ namespace MainClient.UserControls.Users
 
         private void InitHeaders()
         {
-            CollectionView.Columns.Add("Логин", 100);
-            CollectionView.Columns.Add("Имя", 100);
-            CollectionView.Columns.Add("Фамилия", 100);
-            CollectionView.Columns.Add("Отчество", 100);
-            CollectionView.Columns.Add("Контактный номер", 150);
-            CollectionView.Columns.Add("Должность", 150);
+            CollectionView.Columns.Add("Название типа заявки", 250);
+            CollectionView.Columns.Add("Описание", 700);
         }
         internal void UpdateCollection(bool modify)
         {
@@ -75,13 +70,13 @@ namespace MainClient.UserControls.Users
                 return;
             }
 
-            IEnumerable<UserDataContract> dataUsers = (UsersService.GetUsersCollection().Result);
-            IEnumerable<UserModel> users = kernel.Get<IMapperInject>().Map<IEnumerable<UserDataContract>, IEnumerable<UserModel>>(dataUsers);
-            Models = new ObservableCollection<UserModel>();
+            IEnumerable<RequestTypeDataContract> dataRequstTypes = (RequestTypesService.GetRequestTypeCollection().Result);
+            IEnumerable<RequestTypeModel> requestTypes = kernel.Get<IMapperInject>().Map<IEnumerable<RequestTypeDataContract>, IEnumerable<RequestTypeModel>>(dataRequstTypes);
+            Models = new ObservableCollection<RequestTypeModel>();
             Models.CollectionChanged += ModelsCollectionChanged;
-            foreach (UserModel user in users)
+            foreach (RequestTypeModel requestType in requestTypes)
             {
-                Models.Add(user);
+                Models.Add(requestType);
             }
         }
 
@@ -105,8 +100,8 @@ namespace MainClient.UserControls.Users
             //remove single
             if (CollectionView.SelectedIndices.Count.Equals(1))
             {
-                UserModel RemovedModel = Models[CollectionView.SelectedIndices[0]];
-                int removed = await UsersService.DeleteUser(mapper.Map<UserModel, UserDataContract>(RemovedModel));
+                RequestTypeModel RemovedModel = Models[CollectionView.SelectedIndices[0]];
+                int removed = await RequestTypesService.DeleteRequestType(mapper.Map<RequestTypeModel, RequestTypeDataContract>(RemovedModel));
                 Models.Remove(RemovedModel);
                 kernel.Get<IMessageInject>().ShowInfo($"Удалено {removed} записей.");
                 return;
@@ -120,7 +115,7 @@ namespace MainClient.UserControls.Users
         }
         private void AddButtonClick(object sender, System.EventArgs e)
         {
-            Controls.Add(new UsersEditView(kernel, this, null));
+            Controls.Add(new RequestTypesEditView(kernel, this, null));
             Control edit = Controls.Find(nameof(ContentEditUserControlBase), false).FirstOrDefault();
             edit.Location = new System.Drawing.Point(Right - edit.Size.Width, Top);
             edit.BringToFront();
@@ -135,7 +130,7 @@ namespace MainClient.UserControls.Users
                 return;
             }
 
-            Controls.Add(new UsersEditView(kernel, this, Models[CollectionView.SelectedIndices[0]]));
+            Controls.Add(new RequestTypesEditView(kernel, this, Models[CollectionView.SelectedIndices[0]]));
             Control edit = Controls.Find(nameof(ContentEditUserControlBase), false).FirstOrDefault();
             edit.Location = new System.Drawing.Point(Right - edit.Size.Width, Top);
             edit.BringToFront();
@@ -152,16 +147,12 @@ namespace MainClient.UserControls.Users
             {
                 case NotifyCollectionChangedAction.Add:
                     {
-                        if (e.NewItems[0] is UserModel user)
+                        if (e.NewItems[0] is RequestTypeModel requestType)
                         {
                             string[] collectionItem = new string[]
                             {
-                                user.Login,
-                                string.IsNullOrEmpty(user.UserInfo?.FirstName)?"-":user.UserInfo?.FirstName,
-                                string.IsNullOrEmpty(user.UserInfo?.SecondName)?"-":user.UserInfo?.SecondName,
-                                string.IsNullOrEmpty(user.UserInfo?.LastName)?"-":user.UserInfo?.LastName,
-                                string.IsNullOrEmpty(user.UserInfo?.ContactNumber)?"-":user.UserInfo?.ContactNumber,
-                                user.Position?.Name
+                                requestType.RequestName,
+                                requestType.Description,
                             };
                             CollectionView.Items.Add(new ListViewItem(collectionItem));
                         }
@@ -170,21 +161,17 @@ namespace MainClient.UserControls.Users
                 case NotifyCollectionChangedAction.Replace:
                     {
                         int insertIndex = -1;
-                        if (e.OldItems[0] is UserModel oldUser)
+                        if (e.OldItems[0] is RequestTypeModel oldUser)
                         {
                             insertIndex = Models.IndexOf(Models.FirstOrDefault(u => u.ID.Equals(oldUser.ID)));
                             CollectionView.Items.RemoveAt(insertIndex);
                         }
-                        if (e.NewItems[0] is UserModel user)
+                        if (e.NewItems[0] is RequestTypeModel requestType)
                         {
                             string[] collectionItem = new string[]
                             {
-                                user.Login,
-                                string.IsNullOrEmpty(user.UserInfo?.FirstName)?"-":user.UserInfo?.FirstName,
-                                string.IsNullOrEmpty(user.UserInfo?.SecondName)?"-":user.UserInfo?.SecondName,
-                                string.IsNullOrEmpty(user.UserInfo?.LastName)?"-":user.UserInfo?.LastName,
-                                string.IsNullOrEmpty(user.UserInfo?.ContactNumber)?"-":user.UserInfo?.ContactNumber,
-                                user.Position?.Name
+                                requestType.RequestName,
+                                requestType.Description,
                             };
                             CollectionView.Items.Insert(insertIndex, new ListViewItem(collectionItem));
                         }
@@ -193,7 +180,7 @@ namespace MainClient.UserControls.Users
                 case NotifyCollectionChangedAction.Remove:
                     {
                         int removeIndex = e.OldStartingIndex;
-                        if (e.OldItems[0] is UserModel)
+                        if (e.OldItems[0] is RequestTypeModel)
                         {
                             CollectionView.Items.RemoveAt(removeIndex);
                         }

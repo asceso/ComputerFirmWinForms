@@ -120,11 +120,47 @@
     <Compile Include="UserControls\ContentEditUserControlBase.Designer.cs">
       <DependentUpon>ContentEditUserControlBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ContentNoEditUserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ContentNoEditUserControlBase.Designer.cs">
+      <DependentUpon>ContentNoEditUserControlBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ContentUserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ContentUserControlBase.Designer.cs">
       <DependentUpon>ContentUserControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Positions\PositionsEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Positions\PositionsEditView.Designer.cs">
+      <DependentUpon>PositionsEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Positions\PositionsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Positions\PositionsView.Designer.cs">
+      <DependentUpon>PositionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RequestTypes\RequestTypesEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RequestTypes\RequestTypesEditView.Designer.cs">
+      <DependentUpon>RequestTypesEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RequestTypes\RequestTypesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RequestTypes\RequestTypesView.Designer.cs">
+      <DependentUpon>RequestTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Settings\SettingsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Settings\SettingsView.Designer.cs">
+      <DependentUpon>SettingsView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Users\UsersEditView.cs">
       <SubType>UserControl</SubType>
@@ -155,8 +191,14 @@
     <EmbeddedResource Include="UserControls\ContentEditUserControlBase.resx">
       <DependentUpon>ContentEditUserControlBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ContentNoEditUserControlBase.resx">
+      <DependentUpon>ContentNoEditUserControlBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ContentUserControlBase.resx">
       <DependentUpon>ContentUserControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Settings\SettingsView.resx">
+      <DependentUpon>SettingsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Users\UsersEditView.resx">
       <DependentUpon>UsersEditView.cs</DependentUpon>

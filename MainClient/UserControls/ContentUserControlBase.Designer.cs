@@ -210,7 +210,6 @@
         }
 
         #endregion
-        private CoreClient.StyleExtensions.Controls.BaseStyledButton CloseViewButton;
         private System.Windows.Forms.Label EditMargin;
         private System.Windows.Forms.Label AddMargin;
         internal System.Windows.Forms.ListView CollectionView;
@@ -219,5 +218,6 @@
         internal CoreClient.StyleExtensions.Controls.BaseStyledButton AddButton;
         internal System.Windows.Forms.Panel ContentPanel;
         internal System.Windows.Forms.Panel ButtonsPanel;
+        internal CoreClient.StyleExtensions.Controls.BaseStyledButton CloseViewButton;
     }
 }

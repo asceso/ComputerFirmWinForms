@@ -1,0 +1,1 @@
+﻿SELECT [RequestTypes].* FROM [RequestTypes] WHERE [RequestTypes].[ID] = @ID;

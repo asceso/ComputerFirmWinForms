@@ -6,6 +6,9 @@ using CoreClient.StyleExtensions;
 using CoreClient.StyleExtensions.Animation;
 using InjectingCoreLibrary.MapperCore.MemoryCacheCore;
 using MainClient.Properties;
+using MainClient.UserControls.Positions;
+using MainClient.UserControls.RequestTypes;
+using MainClient.UserControls.Settings;
 using MainClient.UserControls.Users;
 using Ninject;
 using PermissionsManager;
@@ -14,57 +17,113 @@ namespace MainClient.Forms
 {
     public partial class ShellForm : Form
     {
+        #region enums
+
         private enum ControlNames
         {
-            UsersView, ClientsView
+            SettingsView, UsersView, PositionsView, RequestTypesView, ClientsView
         }
 
         private enum ControlHeaders
         {
-            Сотрудники, Клиенты
+            Настройки, Сотрудники, Должности, Типы_заявок, Клиенты
         }
-        private string GetRusName(ControlHeaders selectedEnum)
+        private string GetRusHeaderName(ControlHeaders selectedEnum)
             => Enum.GetName(typeof(ControlHeaders), selectedEnum).Replace("_", " ");
 
+        #endregion
+        #region fields
+
         private readonly IKernel kernel;
+        private readonly IPermissionInject permissionManager;
+
+        #endregion
+        #region ctor
+
         public ShellForm(IKernel kernel)
         {
+            #region init
             this.kernel = kernel;
+            permissionManager = kernel.Get<IPermissionInject>();
             AnimatorClass.Start();
             InitializeComponent();
-            BackColor = FormBrushes.WindowBackGroundColor;
-            ForeColor = FormBrushes.WindowForegroundColor;
-            Font = FormBrushes.DefaultRegularFont;
-
-            ButtonsPanel.SetDefaultColorForChildren();
-
-            WindowState = FormWindowState.Maximized;
-
+            SetupStyles();
+            #endregion
+            #region do auth
             AuthForm auth = new AuthForm(kernel);
             auth.ShowDialog();
             if (!auth.AuthDialogResult)
             {
-                Application.Exit();
+                Environment.Exit(0);
             }
-            else
-            {
-                UserModel currentUser = kernel.Get<IMemoryInject>().GetData<UserModel>("CurrentUser");
-                kernel.Get<IPermissionInject>().RegisterPermissionsForUser(kernel, currentUser);
-                Text = $"Компьютерная фирма, текущий пользователь : " +
-                       $"{currentUser.Login}";
-                Icon = Resources.main_icon;
-            }
-
-            UsersButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("UsersGet"));
-            ClientsButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("ClientsGet"));
+            #endregion
+            #region after auth init
+            //get cache
+            UserModel currentUser = kernel.Get<IMemoryInject>().GetData<UserModel>("CurrentUser");
+            //register permissions
+            kernel.Get<IPermissionInject>().RegisterPermissionsForUser(kernel, currentUser);
+            //set after styles and events
+            Text = $"Компьютерная фирма, текущий пользователь : " +
+                    $"{currentUser.Login}";
+            Icon = Resources.main_icon;
+            SetupButtons();
+            #endregion
+        }
+        private void SetupStyles()
+        {
+            BackColor = FormBrushes.WindowBackGroundColor;
+            ForeColor = FormBrushes.WindowForegroundColor;
+            Font = FormBrushes.DefaultRegularFont;
+            ButtonsPanel.SetDefaultColorForChildren();
+            WindowState = FormWindowState.Maximized;
         }
 
+        #endregion
         #region buttons
+        #region add events and accept permissions
+
+        private void SetupButtons()
+        {
+            #region events add
+
+            SettingsButton.Click += SettingsButtonClick;
+            UsersButton.Click += UsersButtonClick;
+            PositionsButton.Click += PositionsButtonClick;
+            RequestTypesButton.Click += RequestTypesButtonClick;
+            ClientsButton.Click += ClientsButtonClick;
+
+            #endregion
+            #region permissions check
+
+            UsersButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("UsersGet"));
+            PositionsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("PositionsGet"));
+            RequestTypesButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("RequestTypesGet"));
+            ClientsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("ClientsGet"));
+
+            #endregion
+        }
+
+        #endregion
+        #region button events
+
+        private void SettingsButtonClick(object sender, EventArgs e)
+            => SwitchTabButton(nameof(ControlNames.SettingsView), GetRusHeaderName(ControlHeaders.Настройки));
+
         private void UsersButtonClick(object sender, EventArgs e)
-            => SwitchTabButton(nameof(ControlNames.UsersView), GetRusName(ControlHeaders.Сотрудники));
+            => SwitchTabButton(nameof(ControlNames.UsersView), GetRusHeaderName(ControlHeaders.Сотрудники));
+
+        private void PositionsButtonClick(object sender, EventArgs e)
+            => SwitchTabButton(nameof(ControlNames.PositionsView), GetRusHeaderName(ControlHeaders.Должности));
+
+        private void RequestTypesButtonClick(object sender, EventArgs e)
+            => SwitchTabButton(nameof(ControlNames.RequestTypesView), GetRusHeaderName(ControlHeaders.Типы_заявок));
 
         private void ClientsButtonClick(object sender, EventArgs e)
-            => SwitchTabButton(nameof(ControlNames.ClientsView), GetRusName(ControlHeaders.Клиенты));
+            => SwitchTabButton(nameof(ControlNames.ClientsView), GetRusHeaderName(ControlHeaders.Клиенты));
+
+        #endregion
+        #endregion
+        #region tab control methods
 
         private void SwitchTabButton(string Name, string Header)
         {
@@ -92,13 +151,20 @@ namespace MainClient.Forms
         {
             switch (Name)
             {
+                case nameof(ControlNames.SettingsView):
+                    return new SettingsView(kernel);
                 case nameof(ControlNames.UsersView):
                     return new UsersView(kernel);
+                case nameof(ControlNames.PositionsView):
+                    return new PositionsView(kernel);
+                case nameof(ControlNames.RequestTypesView):
+                    return new RequestTypesView(kernel);
                 case nameof(ControlNames.ClientsView):
                     break;
             }
             return null;
         }
+
         #endregion
         #region resize shell
         private void ShellFormResize(object sender, EventArgs e)

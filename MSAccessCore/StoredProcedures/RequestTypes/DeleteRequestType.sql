@@ -1,0 +1,1 @@
+﻿DELETE FROM [RequestTypes] WHERE [RequestTypes].[ID] = @ID;

@@ -5,6 +5,9 @@ using WCFProxy.Proxy;
 
 namespace ClientDataServices
 {
+    /// <summary>
+    /// Методы доступа связанные с разрешениями
+    /// </summary>
     public class PermissionsService
     {
         /// <summary>

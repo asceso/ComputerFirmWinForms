@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace MSAccessCore.AccessDataModels
+namespace WCFCore.DataContracts
 {
     [DataContract]
     /// <summary>

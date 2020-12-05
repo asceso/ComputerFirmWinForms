@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.ButtonsPanel = new System.Windows.Forms.Panel();
-            this.SaveAndExitMargin = new System.Windows.Forms.Label();
-            this.SaveMargin = new System.Windows.Forms.Label();
-            this.ContentPanel = new System.Windows.Forms.Panel();
             this.DeclineButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.SaveAndExitMargin = new System.Windows.Forms.Label();
             this.SaveAndExit = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.SaveMargin = new System.Windows.Forms.Label();
             this.SaveButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
             this.CloseViewButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.ContentPanel = new System.Windows.Forms.Panel();
             this.ButtonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,31 +53,6 @@
             this.ButtonsPanel.Name = "ButtonsPanel";
             this.ButtonsPanel.Size = new System.Drawing.Size(427, 25);
             this.ButtonsPanel.TabIndex = 0;
-            // 
-            // SaveAndExitMargin
-            // 
-            this.SaveAndExitMargin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SaveAndExitMargin.Location = new System.Drawing.Point(216, 0);
-            this.SaveAndExitMargin.Name = "SaveAndExitMargin";
-            this.SaveAndExitMargin.Size = new System.Drawing.Size(10, 23);
-            this.SaveAndExitMargin.TabIndex = 5;
-            // 
-            // SaveMargin
-            // 
-            this.SaveMargin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SaveMargin.Location = new System.Drawing.Point(81, 0);
-            this.SaveMargin.Name = "SaveMargin";
-            this.SaveMargin.Size = new System.Drawing.Size(10, 23);
-            this.SaveMargin.TabIndex = 4;
-            // 
-            // ContentPanel
-            // 
-            this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentPanel.Location = new System.Drawing.Point(0, 25);
-            this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(427, 419);
-            this.ContentPanel.TabIndex = 1;
             // 
             // DeclineButton
             // 
@@ -104,6 +79,14 @@
             this.DeclineButton.UseRippleEffect = true;
             this.DeclineButton.UseZoomEffectOnHover = false;
             // 
+            // SaveAndExitMargin
+            // 
+            this.SaveAndExitMargin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SaveAndExitMargin.Location = new System.Drawing.Point(216, 0);
+            this.SaveAndExitMargin.Name = "SaveAndExitMargin";
+            this.SaveAndExitMargin.Size = new System.Drawing.Size(10, 23);
+            this.SaveAndExitMargin.TabIndex = 5;
+            // 
             // SaveAndExit
             // 
             this.SaveAndExit.BackColor = System.Drawing.Color.Tomato;
@@ -128,6 +111,14 @@
             this.SaveAndExit.UseDownPressEffectOnClick = false;
             this.SaveAndExit.UseRippleEffect = true;
             this.SaveAndExit.UseZoomEffectOnHover = false;
+            // 
+            // SaveMargin
+            // 
+            this.SaveMargin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SaveMargin.Location = new System.Drawing.Point(81, 0);
+            this.SaveMargin.Name = "SaveMargin";
+            this.SaveMargin.Size = new System.Drawing.Size(10, 23);
+            this.SaveMargin.TabIndex = 4;
             // 
             // SaveButton
             // 
@@ -180,6 +171,15 @@
             this.CloseViewButton.UseZoomEffectOnHover = false;
             this.CloseViewButton.Click += new System.EventHandler(this.CloseViewButtonClick);
             // 
+            // ContentPanel
+            // 
+            this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContentPanel.Location = new System.Drawing.Point(0, 25);
+            this.ContentPanel.Name = "ContentPanel";
+            this.ContentPanel.Size = new System.Drawing.Size(427, 419);
+            this.ContentPanel.TabIndex = 1;
+            // 
             // ContentEditUserControlBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,10 +198,10 @@
         private System.Windows.Forms.Panel ButtonsPanel;
         private System.Windows.Forms.Label SaveAndExitMargin;
         private System.Windows.Forms.Label SaveMargin;
-        internal System.Windows.Forms.Panel ContentPanel;
         internal CoreClient.StyleExtensions.Controls.BaseStyledButton DeclineButton;
         internal CoreClient.StyleExtensions.Controls.BaseStyledButton SaveAndExit;
         internal CoreClient.StyleExtensions.Controls.BaseStyledButton SaveButton;
         internal CoreClient.StyleExtensions.Controls.BaseStyledButton CloseViewButton;
+        public System.Windows.Forms.Panel ContentPanel;
     }
 }

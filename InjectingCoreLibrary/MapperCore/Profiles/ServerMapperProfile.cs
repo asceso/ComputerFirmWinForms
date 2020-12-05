@@ -9,21 +9,21 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
     {
         public ServerMapperProfile()
         {
-            #region EF Core
-            CreateMap<UserInfo, UserInfoDataContract>();
-            CreateMap<UserInfo, UserInfoDataContract>().ReverseMap();
+            #region EF Core - obsolete
+            //CreateMap<UserInfo, UserInfoDataContract>();
+            //CreateMap<UserInfo, UserInfoDataContract>().ReverseMap();
 
-            CreateMap<Position, PositionDataContract>();
-            CreateMap<Position, PositionDataContract>().ReverseMap();
+            //CreateMap<Position, PositionDataContract>();
+            //CreateMap<Position, PositionDataContract>().ReverseMap();
 
-            CreateMap<User, UserDataContract>();
-            CreateMap<User, UserDataContract>().ReverseMap();
+            //CreateMap<User, UserDataContract>();
+            //CreateMap<User, UserDataContract>().ReverseMap();
 
-            CreateMap<Permission, PermissionDataContract>();
-            CreateMap<Permission, PermissionDataContract>().ReverseMap();
+            //CreateMap<Permission, PermissionDataContract>();
+            //CreateMap<Permission, PermissionDataContract>().ReverseMap();
 
-            CreateMap<PositionPermission, PositionPermissionDataContract>();
-            CreateMap<PositionPermission, PositionPermissionDataContract>().ReverseMap();
+            //CreateMap<PositionPermission, PositionPermissionDataContract>();
+            //CreateMap<PositionPermission, PositionPermissionDataContract>().ReverseMap();
             #endregion
 
             #region Access Core
@@ -32,6 +32,9 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<PositionAD, PositionDataContract>();
             CreateMap<PositionAD, PositionDataContract>().ReverseMap();
+
+            CreateMap<RequestTypeAD, RequestTypeDataContract>();
+            CreateMap<RequestTypeAD, RequestTypeDataContract>().ReverseMap();
 
             CreateMap<UserAD, UserDataContract>();
             CreateMap<UserAD, UserDataContract>().ReverseMap();

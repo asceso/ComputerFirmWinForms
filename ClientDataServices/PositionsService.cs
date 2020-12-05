@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WCFCore.DataContracts;
 using WCFProxy.Proxy;
 
 namespace ClientDataServices
 {
+    /// <summary>
+    /// Методы доступа связанные с должностями
+    /// </summary>
     public static class PositionsService
     {
         /// <summary>
@@ -21,6 +25,14 @@ namespace ClientDataServices
         /// <returns>Модель должности</returns>
         public static async Task<PositionDataContract> GetFirstPositionByName(string name)
             => await TunellProxy.UseTunellProxy(client => client.GetFirstPositionByName(name));
+
+        /// <summary>
+        /// Первая должность по ID
+        /// </summary>
+        /// <param name="ID">ID должности</param>
+        /// <returns>Модель должности</returns>
+        public static async Task<PositionDataContract> GetPositionByID(Guid ID)
+            => await TunellProxy.UseTunellProxy(client => client.GetPositionByID(ID));
 
         /// <summary>
         /// Добавить должность

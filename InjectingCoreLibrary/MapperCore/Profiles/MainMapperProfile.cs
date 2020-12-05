@@ -14,6 +14,9 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
             CreateMap<PositionModel, PositionDataContract>();
             CreateMap<PositionModel, PositionDataContract>().ReverseMap();
 
+            CreateMap<RequestTypeModel, RequestTypeDataContract>();
+            CreateMap<RequestTypeModel, RequestTypeDataContract>().ReverseMap();
+
             CreateMap<UserModel, UserDataContract>();
             CreateMap<UserModel, UserDataContract>().ReverseMap();
 

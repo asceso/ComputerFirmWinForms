@@ -1,4 +1,4 @@
-﻿namespace MainClient.UserControls
+﻿namespace MainClient.UserControls.GenericControls
 {
     partial class ContentEditUserControlBase
     {

@@ -9,6 +9,7 @@ using CoreClient.ControlExtensions;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MessagingCore.AskBox;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
+using MainClient.UserControls.GenericControls;
 using Ninject;
 using PermissionsManager;
 using WCFCore.DataContracts;

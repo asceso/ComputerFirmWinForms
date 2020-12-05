@@ -7,6 +7,7 @@ using ClientDataServices;
 using CoreClient.ControlExtensions;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
+using MainClient.UserControls.GenericControls;
 using MainClient.Forms;
 using Ninject;
 using WCFCore.DataContracts;

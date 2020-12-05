@@ -1,4 +1,5 @@
 ﻿using InjectingCoreLibrary.SettingsCore;
+using MainClient.UserControls.GenericControls;
 using Ninject;
 
 namespace MainClient.UserControls.Settings

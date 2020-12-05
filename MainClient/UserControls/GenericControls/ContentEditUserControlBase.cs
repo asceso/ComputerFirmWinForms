@@ -2,7 +2,7 @@
 using CoreClient.StyleExtensions;
 using Ninject;
 
-namespace MainClient.UserControls
+namespace MainClient.UserControls.GenericControls
 {
     public partial class ContentEditUserControlBase : UserControl
     {

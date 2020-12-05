@@ -114,22 +114,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\ContentEditUserControlBase.cs">
+    <Compile Include="UserControls\GenericControls\ContentEditUserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ContentEditUserControlBase.Designer.cs">
+    <Compile Include="UserControls\GenericControls\ContentEditUserControlBase.Designer.cs">
       <DependentUpon>ContentEditUserControlBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ContentNoEditUserControlBase.cs">
+    <Compile Include="UserControls\GenericControls\ContentNoEditUserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ContentNoEditUserControlBase.Designer.cs">
+    <Compile Include="UserControls\GenericControls\ContentNoEditUserControlBase.Designer.cs">
       <DependentUpon>ContentNoEditUserControlBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ContentUserControlBase.cs">
+    <Compile Include="UserControls\GenericControls\ContentUserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ContentUserControlBase.Designer.cs">
+    <Compile Include="UserControls\GenericControls\ContentUserControlBase.Designer.cs">
       <DependentUpon>ContentUserControlBase.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Positions\PositionsEditView.cs">
@@ -188,13 +188,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ContentEditUserControlBase.resx">
+    <EmbeddedResource Include="UserControls\GenericControls\ContentEditUserControlBase.resx">
       <DependentUpon>ContentEditUserControlBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ContentNoEditUserControlBase.resx">
+    <EmbeddedResource Include="UserControls\GenericControls\ContentNoEditUserControlBase.resx">
       <DependentUpon>ContentNoEditUserControlBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ContentUserControlBase.resx">
+    <EmbeddedResource Include="UserControls\GenericControls\ContentUserControlBase.resx">
       <DependentUpon>ContentUserControlBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Settings\SettingsView.resx">

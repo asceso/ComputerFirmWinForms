@@ -4,6 +4,7 @@ using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
+using MainClient.UserControls.GenericControls;
 using Ninject;
 using WCFCore.DataContracts;
 

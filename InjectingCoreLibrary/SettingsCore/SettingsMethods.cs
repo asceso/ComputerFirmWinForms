@@ -14,7 +14,7 @@ namespace InjectingCoreLibrary.SettingsCore
         public SettingsMethods() => settings = ReadConfig();
 
         //short methods
-        public string GetConnectionString() => settings.ConnectionString.GetConnectionString();
+        //public string GetConnectionString() => settings.ConnectionString.GetConnectionString();
         public string GetServiceName() => settings.ServiceAddress;
 
         //get set conf

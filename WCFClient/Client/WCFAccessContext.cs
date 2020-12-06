@@ -19,16 +19,14 @@ namespace WCFClient.Client
     {
         #region fields
 
+        private const string NotUsedMethod = "Метод не используется";
         private readonly IMapper mapper;
         private static string ConnectionString;
 
         /// <summary>
         /// Названия папок
         /// </summary>
-        private enum SQLFolders
-        {
-            Users, UserInfos, Positions, Permissions, RequestTypes, Clients
-        }
+        private enum SQLFolders { Users, UserInfos, Positions, Permissions, RequestTypes, Clients, PositionPermission }
 
         #endregion
         #region ctor
@@ -570,7 +568,7 @@ namespace WCFClient.Client
         }
 
         #endregion
-        #region permissions
+        #region permissions -- Реализованно
         public IEnumerable<PermissionDataContract> GetPermissionsCollection()
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -604,16 +602,30 @@ namespace WCFClient.Client
 
             return mapper.Map<IEnumerable<PermissionDataContract>>(models);
         }
+
+        #region obsolete
+
+        [Obsolete(NotUsedMethod, true)]
         public PermissionDataContract GetPermissionByID(Guid ID)
             => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public PermissionDataContract GetFirstPermissionByName(string Name)
             => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public PermissionDataContract InsertPermission(PermissionDataContract permission)
             => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public PermissionDataContract UpdatePermission(PermissionDataContract permission)
             => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public int DeletePermission(PermissionDataContract permission)
             => throw new NotImplementedException();
+
+        #endregion
 
         /// <summary>
         /// Маппер из ридера модель разрешения
@@ -631,17 +643,57 @@ namespace WCFClient.Client
         }
 
         #endregion
-        #region position permissions
+        #region position permissions -- Реализованно
+
+        public PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            Guid tempGuid = Guid.NewGuid();
+            Dictionary<string, object> parameters = new Dictionary<string, object>(){
+                {"@ID", tempGuid },
+                {"@PositionID", position.ID },
+                {"@PermissionID", permission.ID }
+            };
+            OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.PositionPermission), nameof(InsertPositionPermissions), parameters, false);
+
+            if (!cmd.ExecuteNonQuery().Equals(0))
+            {
+                return new PositionPermissionDataContract() { ID = tempGuid, Position = position, Permission = permission };
+            }
+            else
+            {
+                throw new FaultException("При добавлении связи должность - разрешение произошла ошибка");
+            }
+        }
+        public int DeletePositionPermissions(Guid ID)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.PositionPermission), nameof(DeletePositionPermissions),
+                new Dictionary<string, object> { { "@ID", ID } }, false);
+
+            int changes = cmd.ExecuteNonQuery();
+            if (changes.Equals(0))
+            {
+                throw new FaultException("При удалении одной или нескольких связей должность - разрешение произошла ошибка");
+            }
+
+            return changes;
+        }
+
+        #region obsolete
+
+        [Obsolete(NotUsedMethod, true)]
         public IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection()
             => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID)
             => throw new NotImplementedException();
-        public PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission)
-            => throw new NotImplementedException();
-        public int DeletePositionPermissions(Guid ID)
-            => throw new NotImplementedException();
+
         #endregion
-        #region clients
+
+        #endregion
+        #region clients - Реализованно
         public IEnumerable<ClientDataContract> GetClientCollection()
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -649,7 +701,6 @@ namespace WCFClient.Client
             List<ClientAD> models = GetCollectionFromReader<ClientAD>(reader, nameof(MapClient));
             return mapper.Map<IEnumerable<ClientDataContract>>(models);
         }
-        public ClientDataContract GetClientByID(Guid ID) => throw new NotImplementedException();
         public ClientDataContract InsertClient(ClientDataContract client)
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -696,6 +747,13 @@ namespace WCFClient.Client
                 throw new FaultException("При изменении клиента произошла ошибка");
             }
         }
+
+        #region obsolete
+
+        [Obsolete(NotUsedMethod, true)]
+        public ClientDataContract GetClientByID(Guid ID) => throw new NotImplementedException();
+
+        [Obsolete(NotUsedMethod, true)]
         public int DeleteClient(ClientDataContract client)
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
@@ -713,6 +771,8 @@ namespace WCFClient.Client
 
             return changes;
         }
+
+        #endregion
 
         /// <summary>
         /// Маппер из ридера модель клиента

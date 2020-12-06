@@ -22,6 +22,7 @@ namespace WCFProxy.Proxy
             {
                 client?.Abort();
                 throw;
+
             }
             finally
             {

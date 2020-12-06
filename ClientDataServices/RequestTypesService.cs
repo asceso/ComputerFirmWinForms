@@ -9,7 +9,7 @@ namespace ClientDataServices
     /// <summary>
     /// Методы доступа связанные с типами заявок
     /// </summary>
-    public class RequestTypesService
+    public static class RequestTypesService
     {
         /// <summary>
         /// Получить список типов зявок

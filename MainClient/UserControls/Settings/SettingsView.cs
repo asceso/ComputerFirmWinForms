@@ -79,7 +79,7 @@ namespace MainClient.UserControls.Settings
             }
             foreach (CheckedListBoxItem item in RequestTypesCheckedComboBox.Properties.Items)
             {
-                if (checkd.Any(c=> c.Equals((item.Value as RequestTypeModel).ID)))
+                if (checkd.Any(c => c.Equals((item.Value as RequestTypeModel).ID)))
                 {
                     item.CheckState = CheckState.Checked;
                 }

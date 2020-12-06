@@ -1,4 +1,4 @@
-﻿namespace CoreClient
+﻿namespace PermissionsManager
 {
     public static class PermissionNames
     {

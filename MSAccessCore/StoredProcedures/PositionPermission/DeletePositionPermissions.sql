@@ -1,0 +1,1 @@
+﻿DELETE FROM [PositionPermission] WHERE [PositionPermission].[ID] = @ID;

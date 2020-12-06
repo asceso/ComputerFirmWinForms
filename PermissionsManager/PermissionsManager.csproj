@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="IPermissionInject.cs" />
     <Compile Include="PermissionMethods.cs" />
+    <Compile Include="PermissionNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

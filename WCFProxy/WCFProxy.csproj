@@ -48,6 +48,10 @@
     <Compile Include="Proxy\TunellProxy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InjectingCoreLibrary\InjectingCoreLibrary.csproj">
+      <Project>{48617673-837A-41AE-ACDC-ADB0A3B275A7}</Project>
+      <Name>InjectingCoreLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFClient\WCFClient.csproj">
       <Project>{76B12C93-2DC7-4E49-8E97-130F5468ABE5}</Project>
       <Name>WCFClient</Name>

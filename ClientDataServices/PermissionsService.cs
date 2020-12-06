@@ -8,7 +8,7 @@ namespace ClientDataServices
     /// <summary>
     /// Методы доступа связанные с разрешениями
     /// </summary>
-    public class PermissionsService
+    public static class PermissionsService
     {
         /// <summary>
         /// Получить список всех разрешений

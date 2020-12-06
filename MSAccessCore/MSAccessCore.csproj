@@ -81,7 +81,10 @@
     <Content Include="StoredProcedures\Permissions\GetPermissionsCollection.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="StoredProcedures\Permissions\GetPermissionByID.sql">
+    <Content Include="StoredProcedures\PositionPermission\DeletePositionPermissions.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\PositionPermission\InsertPositionPermissions.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\Positions\DeletePosition.sql">

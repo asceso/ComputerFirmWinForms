@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using ApplicationModels;
-using CoreClient;
 using CoreClient.ControlExtensions;
 using CoreClient.StyleExtensions;
 using CoreClient.StyleExtensions.Animation;

@@ -1,0 +1,1 @@
+﻿INSERT INTO [PositionPermission] VALUES (@ID, @PositionID, @PermissionID);

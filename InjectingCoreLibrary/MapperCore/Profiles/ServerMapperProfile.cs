@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EFCore.Entities;
 using MSAccessCore.AccessDataModels;
 using WCFCore.DataContracts;
 

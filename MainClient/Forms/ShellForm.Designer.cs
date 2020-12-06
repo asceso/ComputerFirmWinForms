@@ -28,37 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
-            this.ButtonsPanel = new System.Windows.Forms.Panel();
-            this.ClientsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
-            this.ClientsTopMargin = new System.Windows.Forms.Label();
-            this.PositionsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
-            this.PositionTopMargin = new System.Windows.Forms.Label();
-            this.UsersButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
-            this.UserTopMargin = new System.Windows.Forms.Label();
-            this.SettingsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
-            this.SettingsTopMargin = new System.Windows.Forms.Label();
+            this.RightPanel = new System.Windows.Forms.Panel();
             this.ContentTabControl = new System.Windows.Forms.TabControl();
-            this.RequestTypesButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.infoLabel = new System.Windows.Forms.Label();
+            this.ButtonsPanel = new System.Windows.Forms.Panel();
+            this.ClientsTopMargin = new System.Windows.Forms.Label();
             this.RequestTypesTopMargin = new System.Windows.Forms.Label();
+            this.PositionTopMargin = new System.Windows.Forms.Label();
+            this.UserTopMargin = new System.Windows.Forms.Label();
+            this.SettingsTopMargin = new System.Windows.Forms.Label();
+            this.ClientsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.RequestTypesButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.PositionsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.UsersButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.SettingsButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
+            this.DockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.LeftDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.MainTable.SuspendLayout();
+            this.RightPanel.SuspendLayout();
             this.ButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DockManager)).BeginInit();
+            this.LeftDockPanel.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
+            this.dockPanel2.SuspendLayout();
+            this.hideContainerLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTable
             // 
-            this.MainTable.ColumnCount = 2;
-            this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.MainTable.ColumnCount = 1;
             this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainTable.Controls.Add(this.ButtonsPanel, 0, 0);
-            this.MainTable.Controls.Add(this.ContentTabControl, 1, 0);
+            this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MainTable.Controls.Add(this.RightPanel, 0, 0);
             this.MainTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTable.Location = new System.Drawing.Point(0, 0);
+            this.MainTable.Location = new System.Drawing.Point(21, 0);
             this.MainTable.Name = "MainTable";
             this.MainTable.RowCount = 1;
             this.MainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainTable.Size = new System.Drawing.Size(800, 450);
+            this.MainTable.Size = new System.Drawing.Size(763, 461);
             this.MainTable.TabIndex = 0;
+            // 
+            // RightPanel
+            // 
+            this.RightPanel.Controls.Add(this.ContentTabControl);
+            this.RightPanel.Controls.Add(this.infoLabel);
+            this.RightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightPanel.Location = new System.Drawing.Point(3, 3);
+            this.RightPanel.Name = "RightPanel";
+            this.RightPanel.Size = new System.Drawing.Size(757, 455);
+            this.RightPanel.TabIndex = 10;
+            // 
+            // ContentTabControl
+            // 
+            this.ContentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContentTabControl.Location = new System.Drawing.Point(0, 0);
+            this.ContentTabControl.Name = "ContentTabControl";
+            this.ContentTabControl.SelectedIndex = 0;
+            this.ContentTabControl.Size = new System.Drawing.Size(757, 455);
+            this.ContentTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.ContentTabControl.TabIndex = 1;
+            this.ContentTabControl.Visible = false;
+            this.ContentTabControl.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.ContentTabControlControlAdded);
+            this.ContentTabControl.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.ContentTabControlControlRemoved);
+            this.ContentTabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ContentTabControlMouseClick);
+            // 
+            // infoLabel
+            // 
+            this.infoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.infoLabel.Location = new System.Drawing.Point(0, 0);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(757, 455);
+            this.infoLabel.TabIndex = 2;
+            this.infoLabel.Text = "Для начала работы с информационной системой используйте меню управления";
+            this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ButtonsPanel
             // 
@@ -73,10 +121,55 @@
             this.ButtonsPanel.Controls.Add(this.SettingsButton);
             this.ButtonsPanel.Controls.Add(this.SettingsTopMargin);
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsPanel.Location = new System.Drawing.Point(3, 3);
+            this.ButtonsPanel.Location = new System.Drawing.Point(0, 0);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(144, 444);
+            this.ButtonsPanel.Size = new System.Drawing.Size(193, 432);
             this.ButtonsPanel.TabIndex = 0;
+            // 
+            // ClientsTopMargin
+            // 
+            this.ClientsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ClientsTopMargin.Location = new System.Drawing.Point(0, 160);
+            this.ClientsTopMargin.Name = "ClientsTopMargin";
+            this.ClientsTopMargin.Size = new System.Drawing.Size(193, 10);
+            this.ClientsTopMargin.TabIndex = 3;
+            this.ClientsTopMargin.Tag = "Margin";
+            // 
+            // RequestTypesTopMargin
+            // 
+            this.RequestTypesTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RequestTypesTopMargin.Location = new System.Drawing.Point(0, 120);
+            this.RequestTypesTopMargin.Name = "RequestTypesTopMargin";
+            this.RequestTypesTopMargin.Size = new System.Drawing.Size(193, 10);
+            this.RequestTypesTopMargin.TabIndex = 9;
+            this.RequestTypesTopMargin.Tag = "Margin";
+            // 
+            // PositionTopMargin
+            // 
+            this.PositionTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PositionTopMargin.Location = new System.Drawing.Point(0, 80);
+            this.PositionTopMargin.Name = "PositionTopMargin";
+            this.PositionTopMargin.Size = new System.Drawing.Size(193, 10);
+            this.PositionTopMargin.TabIndex = 7;
+            this.PositionTopMargin.Tag = "Margin";
+            // 
+            // UserTopMargin
+            // 
+            this.UserTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UserTopMargin.Location = new System.Drawing.Point(0, 40);
+            this.UserTopMargin.Name = "UserTopMargin";
+            this.UserTopMargin.Size = new System.Drawing.Size(193, 10);
+            this.UserTopMargin.TabIndex = 2;
+            this.UserTopMargin.Tag = "Margin";
+            // 
+            // SettingsTopMargin
+            // 
+            this.SettingsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SettingsTopMargin.Location = new System.Drawing.Point(0, 0);
+            this.SettingsTopMargin.Name = "SettingsTopMargin";
+            this.SettingsTopMargin.Size = new System.Drawing.Size(193, 10);
+            this.SettingsTopMargin.TabIndex = 5;
+            this.SettingsTopMargin.Tag = "Margin";
             // 
             // ClientsButton
             // 
@@ -96,133 +189,13 @@
             this.ClientsButton.Name = "ClientsButton";
             this.ClientsButton.RippleColor = System.Drawing.Color.Black;
             this.ClientsButton.RoundingEnable = true;
-            this.ClientsButton.Size = new System.Drawing.Size(144, 30);
+            this.ClientsButton.Size = new System.Drawing.Size(193, 30);
             this.ClientsButton.TabIndex = 1;
             this.ClientsButton.Text = "Клиенты";
             this.ClientsButton.TextHover = null;
             this.ClientsButton.UseDownPressEffectOnClick = false;
             this.ClientsButton.UseRippleEffect = true;
             this.ClientsButton.UseZoomEffectOnHover = false;
-            // 
-            // ClientsTopMargin
-            // 
-            this.ClientsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ClientsTopMargin.Location = new System.Drawing.Point(0, 160);
-            this.ClientsTopMargin.Name = "ClientsTopMargin";
-            this.ClientsTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.ClientsTopMargin.TabIndex = 3;
-            this.ClientsTopMargin.Tag = "Margin";
-            // 
-            // PositionsButton
-            // 
-            this.PositionsButton.BackColor = System.Drawing.Color.Tomato;
-            this.PositionsButton.BackColorAdditional = System.Drawing.Color.Gray;
-            this.PositionsButton.BackColorGradientEnabled = false;
-            this.PositionsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.PositionsButton.BorderColor = System.Drawing.Color.Tomato;
-            this.PositionsButton.BorderColorEnabled = false;
-            this.PositionsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
-            this.PositionsButton.BorderColorOnHoverEnabled = false;
-            this.PositionsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PositionsButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PositionsButton.ForeColor = System.Drawing.Color.Black;
-            this.PositionsButton.Location = new System.Drawing.Point(0, 90);
-            this.PositionsButton.Name = "PositionsButton";
-            this.PositionsButton.RippleColor = System.Drawing.Color.Black;
-            this.PositionsButton.RoundingEnable = true;
-            this.PositionsButton.Size = new System.Drawing.Size(144, 30);
-            this.PositionsButton.TabIndex = 6;
-            this.PositionsButton.Text = "Должности";
-            this.PositionsButton.TextHover = null;
-            this.PositionsButton.UseDownPressEffectOnClick = false;
-            this.PositionsButton.UseRippleEffect = true;
-            this.PositionsButton.UseZoomEffectOnHover = false;
-            // 
-            // PositionTopMargin
-            // 
-            this.PositionTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PositionTopMargin.Location = new System.Drawing.Point(0, 80);
-            this.PositionTopMargin.Name = "PositionTopMargin";
-            this.PositionTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.PositionTopMargin.TabIndex = 7;
-            this.PositionTopMargin.Tag = "Margin";
-            // 
-            // UsersButton
-            // 
-            this.UsersButton.BackColor = System.Drawing.Color.Tomato;
-            this.UsersButton.BackColorAdditional = System.Drawing.Color.Gray;
-            this.UsersButton.BackColorGradientEnabled = false;
-            this.UsersButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.UsersButton.BorderColor = System.Drawing.Color.Tomato;
-            this.UsersButton.BorderColorEnabled = false;
-            this.UsersButton.BorderColorOnHover = System.Drawing.Color.Tomato;
-            this.UsersButton.BorderColorOnHoverEnabled = false;
-            this.UsersButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UsersButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UsersButton.ForeColor = System.Drawing.Color.Black;
-            this.UsersButton.Location = new System.Drawing.Point(0, 50);
-            this.UsersButton.Name = "UsersButton";
-            this.UsersButton.RippleColor = System.Drawing.Color.Black;
-            this.UsersButton.RoundingEnable = true;
-            this.UsersButton.Size = new System.Drawing.Size(144, 30);
-            this.UsersButton.TabIndex = 0;
-            this.UsersButton.Text = "Сотрудники";
-            this.UsersButton.TextHover = null;
-            this.UsersButton.UseDownPressEffectOnClick = false;
-            this.UsersButton.UseRippleEffect = true;
-            this.UsersButton.UseZoomEffectOnHover = false;
-            // 
-            // UserTopMargin
-            // 
-            this.UserTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UserTopMargin.Location = new System.Drawing.Point(0, 40);
-            this.UserTopMargin.Name = "UserTopMargin";
-            this.UserTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.UserTopMargin.TabIndex = 2;
-            this.UserTopMargin.Tag = "Margin";
-            // 
-            // SettingsButton
-            // 
-            this.SettingsButton.BackColor = System.Drawing.Color.Tomato;
-            this.SettingsButton.BackColorAdditional = System.Drawing.Color.Gray;
-            this.SettingsButton.BackColorGradientEnabled = false;
-            this.SettingsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.SettingsButton.BorderColor = System.Drawing.Color.Tomato;
-            this.SettingsButton.BorderColorEnabled = false;
-            this.SettingsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
-            this.SettingsButton.BorderColorOnHoverEnabled = false;
-            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SettingsButton.ForeColor = System.Drawing.Color.Black;
-            this.SettingsButton.Location = new System.Drawing.Point(0, 10);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.RippleColor = System.Drawing.Color.Black;
-            this.SettingsButton.RoundingEnable = true;
-            this.SettingsButton.Size = new System.Drawing.Size(144, 30);
-            this.SettingsButton.TabIndex = 4;
-            this.SettingsButton.Text = "Настройки";
-            this.SettingsButton.TextHover = null;
-            this.SettingsButton.UseDownPressEffectOnClick = false;
-            this.SettingsButton.UseRippleEffect = true;
-            this.SettingsButton.UseZoomEffectOnHover = false;
-            // 
-            // SettingsTopMargin
-            // 
-            this.SettingsTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SettingsTopMargin.Location = new System.Drawing.Point(0, 0);
-            this.SettingsTopMargin.Name = "SettingsTopMargin";
-            this.SettingsTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.SettingsTopMargin.TabIndex = 5;
-            this.SettingsTopMargin.Tag = "Margin";
-            // 
-            // ContentTabControl
-            // 
-            this.ContentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentTabControl.Location = new System.Drawing.Point(153, 3);
-            this.ContentTabControl.Name = "ContentTabControl";
-            this.ContentTabControl.SelectedIndex = 0;
-            this.ContentTabControl.Size = new System.Drawing.Size(644, 444);
-            this.ContentTabControl.TabIndex = 1;
             // 
             // RequestTypesButton
             // 
@@ -241,7 +214,7 @@
             this.RequestTypesButton.Name = "RequestTypesButton";
             this.RequestTypesButton.RippleColor = System.Drawing.Color.Black;
             this.RequestTypesButton.RoundingEnable = true;
-            this.RequestTypesButton.Size = new System.Drawing.Size(144, 30);
+            this.RequestTypesButton.Size = new System.Drawing.Size(193, 30);
             this.RequestTypesButton.TabIndex = 8;
             this.RequestTypesButton.Text = "Типы заявок";
             this.RequestTypesButton.TextHover = null;
@@ -249,26 +222,175 @@
             this.RequestTypesButton.UseRippleEffect = true;
             this.RequestTypesButton.UseZoomEffectOnHover = false;
             // 
-            // RequestTypesTopMargin
+            // PositionsButton
             // 
-            this.RequestTypesTopMargin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RequestTypesTopMargin.Location = new System.Drawing.Point(0, 120);
-            this.RequestTypesTopMargin.Name = "RequestTypesTopMargin";
-            this.RequestTypesTopMargin.Size = new System.Drawing.Size(144, 10);
-            this.RequestTypesTopMargin.TabIndex = 9;
-            this.RequestTypesTopMargin.Tag = "Margin";
+            this.PositionsButton.BackColor = System.Drawing.Color.Tomato;
+            this.PositionsButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.PositionsButton.BackColorGradientEnabled = false;
+            this.PositionsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.PositionsButton.BorderColor = System.Drawing.Color.Tomato;
+            this.PositionsButton.BorderColorEnabled = false;
+            this.PositionsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.PositionsButton.BorderColorOnHoverEnabled = false;
+            this.PositionsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PositionsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PositionsButton.ForeColor = System.Drawing.Color.Black;
+            this.PositionsButton.Location = new System.Drawing.Point(0, 90);
+            this.PositionsButton.Name = "PositionsButton";
+            this.PositionsButton.RippleColor = System.Drawing.Color.Black;
+            this.PositionsButton.RoundingEnable = true;
+            this.PositionsButton.Size = new System.Drawing.Size(193, 30);
+            this.PositionsButton.TabIndex = 6;
+            this.PositionsButton.Text = "Должности";
+            this.PositionsButton.TextHover = null;
+            this.PositionsButton.UseDownPressEffectOnClick = false;
+            this.PositionsButton.UseRippleEffect = true;
+            this.PositionsButton.UseZoomEffectOnHover = false;
+            // 
+            // UsersButton
+            // 
+            this.UsersButton.BackColor = System.Drawing.Color.Tomato;
+            this.UsersButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.UsersButton.BackColorGradientEnabled = false;
+            this.UsersButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.UsersButton.BorderColor = System.Drawing.Color.Tomato;
+            this.UsersButton.BorderColorEnabled = false;
+            this.UsersButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.UsersButton.BorderColorOnHoverEnabled = false;
+            this.UsersButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UsersButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UsersButton.ForeColor = System.Drawing.Color.Black;
+            this.UsersButton.Location = new System.Drawing.Point(0, 50);
+            this.UsersButton.Name = "UsersButton";
+            this.UsersButton.RippleColor = System.Drawing.Color.Black;
+            this.UsersButton.RoundingEnable = true;
+            this.UsersButton.Size = new System.Drawing.Size(193, 30);
+            this.UsersButton.TabIndex = 0;
+            this.UsersButton.Text = "Сотрудники";
+            this.UsersButton.TextHover = null;
+            this.UsersButton.UseDownPressEffectOnClick = false;
+            this.UsersButton.UseRippleEffect = true;
+            this.UsersButton.UseZoomEffectOnHover = false;
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.BackColor = System.Drawing.Color.Tomato;
+            this.SettingsButton.BackColorAdditional = System.Drawing.Color.Gray;
+            this.SettingsButton.BackColorGradientEnabled = false;
+            this.SettingsButton.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.SettingsButton.BorderColor = System.Drawing.Color.Tomato;
+            this.SettingsButton.BorderColorEnabled = false;
+            this.SettingsButton.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.SettingsButton.BorderColorOnHoverEnabled = false;
+            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SettingsButton.ForeColor = System.Drawing.Color.Black;
+            this.SettingsButton.Location = new System.Drawing.Point(0, 10);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.RippleColor = System.Drawing.Color.Black;
+            this.SettingsButton.RoundingEnable = true;
+            this.SettingsButton.Size = new System.Drawing.Size(193, 30);
+            this.SettingsButton.TabIndex = 4;
+            this.SettingsButton.Text = "Настройки";
+            this.SettingsButton.TextHover = null;
+            this.SettingsButton.UseDownPressEffectOnClick = false;
+            this.SettingsButton.UseRippleEffect = true;
+            this.SettingsButton.UseZoomEffectOnHover = false;
+            // 
+            // DockManager
+            // 
+            this.DockManager.AutoHideContainers.AddRange(new DevExpress.XtraBars.Docking.AutoHideContainer[] {
+            this.hideContainerLeft});
+            this.DockManager.Form = this;
+            this.DockManager.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanel2});
+            this.DockManager.Style = DevExpress.XtraBars.Docking2010.Views.DockingViewStyle.Classic;
+            this.DockManager.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.MenuStrip",
+            "System.Windows.Forms.StatusStrip",
+            "System.Windows.Forms.StatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl",
+            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
+            "DevExpress.XtraBars.Navigation.TileNavPane",
+            "DevExpress.XtraBars.TabFormControl",
+            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
+            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
+            // 
+            // LeftDockPanel
+            // 
+            this.LeftDockPanel.Controls.Add(this.dockPanel1_Container);
+            this.LeftDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.LeftDockPanel.ID = new System.Guid("6fe844f1-aab1-491c-a9e9-b81c47860dcd");
+            this.LeftDockPanel.Location = new System.Drawing.Point(0, 0);
+            this.LeftDockPanel.Name = "LeftDockPanel";
+            this.LeftDockPanel.OriginalSize = new System.Drawing.Size(200, 200);
+            this.LeftDockPanel.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.LeftDockPanel.SavedIndex = 0;
+            this.LeftDockPanel.Size = new System.Drawing.Size(200, 461);
+            this.LeftDockPanel.Text = "Меню управления";
+            this.LeftDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.ButtonsPanel);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 26);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 432);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // dockPanel2
+            // 
+            this.dockPanel2.Controls.Add(this.dockPanel2_Container);
+            this.dockPanel2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dockPanel2.ID = new System.Guid("491ca89f-7503-4744-bd58-12a6f246972d");
+            this.dockPanel2.Location = new System.Drawing.Point(200, 0);
+            this.dockPanel2.Name = "dockPanel2";
+            this.dockPanel2.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel2.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dockPanel2.SavedIndex = 1;
+            this.dockPanel2.Size = new System.Drawing.Size(584, 200);
+            this.dockPanel2.Text = "dockPanel2";
+            this.dockPanel2.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
+            // 
+            // dockPanel2_Container
+            // 
+            this.dockPanel2_Container.Location = new System.Drawing.Point(3, 26);
+            this.dockPanel2_Container.Name = "dockPanel2_Container";
+            this.dockPanel2_Container.Size = new System.Drawing.Size(578, 170);
+            this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // hideContainerLeft
+            // 
+            this.hideContainerLeft.BackColor = System.Drawing.SystemColors.Control;
+            this.hideContainerLeft.Controls.Add(this.LeftDockPanel);
+            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
+            this.hideContainerLeft.Name = "hideContainerLeft";
+            this.hideContainerLeft.Size = new System.Drawing.Size(21, 461);
             // 
             // ShellForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.MainTable);
+            this.Controls.Add(this.hideContainerLeft);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ShellForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShellForm";
             this.Resize += new System.EventHandler(this.ShellFormResize);
             this.MainTable.ResumeLayout(false);
+            this.RightPanel.ResumeLayout(false);
             this.ButtonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DockManager)).EndInit();
+            this.LeftDockPanel.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            this.dockPanel2.ResumeLayout(false);
+            this.hideContainerLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,5 +410,13 @@
         private System.Windows.Forms.Label PositionTopMargin;
         private CoreClient.StyleExtensions.Controls.BaseStyledButton RequestTypesButton;
         private System.Windows.Forms.Label RequestTypesTopMargin;
+        private System.Windows.Forms.Panel RightPanel;
+        private System.Windows.Forms.Label infoLabel;
+        private DevExpress.XtraBars.Docking.DockManager DockManager;
+        private DevExpress.XtraBars.Docking.DockPanel LeftDockPanel;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel2;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
+        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
     }
 }

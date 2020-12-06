@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationModels
 {
@@ -12,31 +13,37 @@ namespace ApplicationModels
         /// </summary>
         public Guid ID { get; set; }
 
+        [Display(Name = "Имя")]
         /// <summary>
         /// Имя клиента
         /// </summary>
         public string FirstName { get; set; }
 
+        [Display(Name = "Фамилия")]
         /// <summary>
         /// Фамилия клиента
         /// </summary>
         public string SecondName { get; set; }
 
+        [Display(Name = "Отчество")]
         /// <summary>
         /// Отчество клиента
         /// </summary>
         public string LastName { get; set; }
 
+        [Display(Name = "Контактный номер")]
         /// <summary>
         /// Контактный номер
         /// </summary>
         public string ContactNumber { get; set; }
 
+        [Display(Name = "Холодный контакт")]
         /// <summary>
         /// Холодный контакт
         /// </summary>
         public bool IsLead { get; set; }
 
+        [Display(Name = "Удален в архив")]
         /// <summary>
         /// Удален в архив
         /// </summary>

@@ -1,0 +1,1 @@
+﻿INSERT INTO [Clients] VALUES (@ID, @FirstName, @SecondName, @LastName, @ContactNumber, @IsLead, @IsDeleted);

@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using ApplicationModels;
+using CoreClient;
 using CoreClient.ControlExtensions;
 using CoreClient.StyleExtensions;
 using CoreClient.StyleExtensions.Animation;
+using DevExpress.XtraSplashScreen;
 using InjectingCoreLibrary.MapperCore.MemoryCacheCore;
 using MainClient.Properties;
+using MainClient.UserControls.Clients;
 using MainClient.UserControls.Positions;
 using MainClient.UserControls.RequestTypes;
 using MainClient.UserControls.Settings;
@@ -34,6 +38,7 @@ namespace MainClient.Forms
         #endregion
         #region fields
 
+        private IOverlaySplashScreenHandle Loader;
         private readonly IKernel kernel;
         private readonly IPermissionInject permissionManager;
 
@@ -46,6 +51,7 @@ namespace MainClient.Forms
             this.kernel = kernel;
             permissionManager = kernel.Get<IPermissionInject>();
             AnimatorClass.Start();
+            AutoScaleMode = AutoScaleMode.None;
             InitializeComponent();
             SetupStyles();
             #endregion
@@ -95,10 +101,10 @@ namespace MainClient.Forms
             #endregion
             #region permissions check
 
-            UsersButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("UsersGet"));
-            PositionsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("PositionsGet"));
-            RequestTypesButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("RequestTypesGet"));
-            ClientsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission("ClientsGet"));
+            UsersButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.UsersGet));
+            PositionsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.PositionsGet));
+            RequestTypesButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.RequestTypesGet));
+            ClientsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.ClientsGet));
 
             #endregion
         }
@@ -127,6 +133,8 @@ namespace MainClient.Forms
 
         private void SwitchTabButton(string Name, string Header)
         {
+            Loader = this.ShowLoader();
+
             if (ContentTabControl.HasPage(Name))
             {
                 ContentTabControl.SetPageByName(Name);
@@ -137,16 +145,24 @@ namespace MainClient.Forms
             }
 
             TabPage page = ContentTabControl.GetPageByName(Name);
+
             if (page.Controls.Count.Equals(0))
             {
                 page.Controls.Add(GetControlByName(Name));
             }
-
             foreach (Control item in page.Controls)
             {
                 item.Size = page.Size;
             }
+
+            this.HideLoader(Loader);
+            LeftDockPanel.HideImmediately();
         }
+        /// <summary>
+        /// Меняет user control по названию
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         private UserControl GetControlByName(string Name)
         {
             switch (Name)
@@ -160,21 +176,37 @@ namespace MainClient.Forms
                 case nameof(ControlNames.RequestTypesView):
                     return new RequestTypesView(kernel);
                 case nameof(ControlNames.ClientsView):
-                    break;
+                    return new ClientsView(kernel);
             }
             return null;
+        }
+        private void ContentTabControlMouseClick(object sender, MouseEventArgs e)
+        {
+            var tabControl = sender as TabControl;
+            var tabs = tabControl.TabPages;
+
+            if (e.Button.Equals(MouseButtons.Middle))
+            {
+                tabs.Remove(tabs.Cast<TabPage>()
+                                .Where((t, i) => tabControl.GetTabRect(i).Contains(e.Location))
+                                .First());
+            }
+        }
+        private void ContentTabControlControlAdded(object sender, ControlEventArgs e) => ContentTabControl.Visible = true;
+        private void ContentTabControlControlRemoved(object sender, ControlEventArgs e)
+        {
+            if (ContentTabControl.Controls.Count.Equals(0))
+                ContentTabControl.Visible = false;
         }
 
         #endregion
         #region resize shell
         private void ShellFormResize(object sender, EventArgs e)
         {
+            ContentTabControl.Size = RightPanel.Size;
             foreach (TabPage page in ContentTabControl.TabPages)
             {
-                foreach (Control item in page.Controls)
-                {
-                    item.Size = page.Size;
-                }
+                page.Size = RightPanel.Size;
             }
         }
         #endregion

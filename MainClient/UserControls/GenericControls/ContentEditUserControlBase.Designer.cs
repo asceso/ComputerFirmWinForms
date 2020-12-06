@@ -51,7 +51,7 @@
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ButtonsPanel.Location = new System.Drawing.Point(0, 0);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(427, 25);
+            this.ButtonsPanel.Size = new System.Drawing.Size(628, 25);
             this.ButtonsPanel.TabIndex = 0;
             // 
             // DeclineButton
@@ -67,7 +67,7 @@
             this.DeclineButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeclineButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.DeclineButton.ForeColor = System.Drawing.Color.Black;
-            this.DeclineButton.Location = new System.Drawing.Point(226, 0);
+            this.DeclineButton.Location = new System.Drawing.Point(286, 0);
             this.DeclineButton.Name = "DeclineButton";
             this.DeclineButton.RippleColor = System.Drawing.Color.Black;
             this.DeclineButton.RoundingEnable = true;
@@ -82,7 +82,7 @@
             // SaveAndExitMargin
             // 
             this.SaveAndExitMargin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SaveAndExitMargin.Location = new System.Drawing.Point(216, 0);
+            this.SaveAndExitMargin.Location = new System.Drawing.Point(276, 0);
             this.SaveAndExitMargin.Name = "SaveAndExitMargin";
             this.SaveAndExitMargin.Size = new System.Drawing.Size(10, 23);
             this.SaveAndExitMargin.TabIndex = 5;
@@ -104,7 +104,7 @@
             this.SaveAndExit.Name = "SaveAndExit";
             this.SaveAndExit.RippleColor = System.Drawing.Color.Black;
             this.SaveAndExit.RoundingEnable = true;
-            this.SaveAndExit.Size = new System.Drawing.Size(125, 23);
+            this.SaveAndExit.Size = new System.Drawing.Size(185, 23);
             this.SaveAndExit.TabIndex = 2;
             this.SaveAndExit.Text = "Сохранить и закрыть";
             this.SaveAndExit.TextHover = null;
@@ -158,7 +158,7 @@
             this.CloseViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseViewButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseViewButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseViewButton.Location = new System.Drawing.Point(344, 0);
+            this.CloseViewButton.Location = new System.Drawing.Point(545, 0);
             this.CloseViewButton.Name = "CloseViewButton";
             this.CloseViewButton.RippleColor = System.Drawing.Color.Black;
             this.CloseViewButton.RoundingEnable = true;
@@ -177,7 +177,7 @@
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(0, 25);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(427, 419);
+            this.ContentPanel.Size = new System.Drawing.Size(628, 430);
             this.ContentPanel.TabIndex = 1;
             // 
             // ContentEditUserControlBase
@@ -187,7 +187,7 @@
             this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.ButtonsPanel);
             this.Name = "ContentEditUserControlBase";
-            this.Size = new System.Drawing.Size(427, 444);
+            this.Size = new System.Drawing.Size(628, 455);
             this.ButtonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

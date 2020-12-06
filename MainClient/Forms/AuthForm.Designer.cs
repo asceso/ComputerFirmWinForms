@@ -28,26 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LoaderBox = new System.Windows.Forms.PictureBox();
+            this.BackAuth = new System.ComponentModel.BackgroundWorker();
+            this.PasswordTE = new DevExpress.XtraEditors.TextEdit();
+            this.LoginTE = new DevExpress.XtraEditors.TextEdit();
             this.CancelButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
             this.AuthorizeButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
-            this.PasswordTE = new CoreClient.ControlExtensions.TextEditControl();
-            this.LoginTE = new CoreClient.ControlExtensions.TextEditControl();
-            this.BackAuth = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)(this.LoaderBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordTE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginTE.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // LoaderBox
+            // BackAuth
             // 
-            this.LoaderBox.BackColor = System.Drawing.Color.Transparent;
-            this.LoaderBox.Image = global::MainClient.Properties.Resources.spinner;
-            this.LoaderBox.Location = new System.Drawing.Point(0, 0);
-            this.LoaderBox.Name = "LoaderBox";
-            this.LoaderBox.Size = new System.Drawing.Size(300, 121);
-            this.LoaderBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LoaderBox.TabIndex = 4;
-            this.LoaderBox.TabStop = false;
-            this.LoaderBox.Visible = false;
+            this.BackAuth.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackAuthDoWork);
+            this.BackAuth.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackAuthRunWorkerCompleted);
+            // 
+            // PasswordTE
+            // 
+            this.PasswordTE.Location = new System.Drawing.Point(12, 49);
+            this.PasswordTE.Name = "PasswordTE";
+            this.PasswordTE.Properties.Appearance.Options.UseTextOptions = true;
+            this.PasswordTE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PasswordTE.Properties.NullText = "Введите пароль";
+            this.PasswordTE.Size = new System.Drawing.Size(276, 20);
+            this.PasswordTE.TabIndex = 5;
+            // 
+            // LoginTE
+            // 
+            this.LoginTE.Location = new System.Drawing.Point(12, 12);
+            this.LoginTE.Name = "LoginTE";
+            this.LoginTE.Properties.Appearance.Options.UseTextOptions = true;
+            this.LoginTE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.LoginTE.Properties.NullText = "Введите логин";
+            this.LoginTE.Size = new System.Drawing.Size(276, 20);
+            this.LoginTE.TabIndex = 4;
             // 
             // CancelButton
             // 
@@ -100,70 +113,30 @@
             this.AuthorizeButton.UseRippleEffect = true;
             this.AuthorizeButton.UseZoomEffectOnHover = false;
             // 
-            // PasswordTE
-            // 
-            this.PasswordTE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PasswordTE.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordTE.Header = "Пароль";
-            this.PasswordTE.HeaderSize = new System.Drawing.Size(150, 30);
-            this.PasswordTE.Location = new System.Drawing.Point(0, 41);
-            this.PasswordTE.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.PasswordTE.MinHeaderSize = new System.Drawing.Size(75, 0);
-            this.PasswordTE.Name = "PasswordTE";
-            this.PasswordTE.Size = new System.Drawing.Size(300, 30);
-            this.PasswordTE.TabIndex = 1;
-            this.PasswordTE.UsingPasswordChar = true;
-            this.PasswordTE.Value = "";
-            this.PasswordTE.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // LoginTE
-            // 
-            this.LoginTE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LoginTE.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginTE.Header = "Логин";
-            this.LoginTE.HeaderSize = new System.Drawing.Size(150, 31);
-            this.LoginTE.Location = new System.Drawing.Point(0, 0);
-            this.LoginTE.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.LoginTE.MinHeaderSize = new System.Drawing.Size(75, 0);
-            this.LoginTE.Name = "LoginTE";
-            this.LoginTE.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.LoginTE.Size = new System.Drawing.Size(300, 41);
-            this.LoginTE.TabIndex = 0;
-            this.LoginTE.UsingPasswordChar = false;
-            this.LoginTE.Value = "";
-            this.LoginTE.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // BackAuth
-            // 
-            this.BackAuth.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackAuthDoWork);
-            this.BackAuth.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackAuthRunWorkerCompleted);
-            // 
             // AuthForm
             // 
             this.ClientSize = new System.Drawing.Size(300, 119);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.AuthorizeButton);
             this.Controls.Add(this.PasswordTE);
             this.Controls.Add(this.LoginTE);
-            this.Controls.Add(this.LoaderBox);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.AuthorizeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AuthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
-            ((System.ComponentModel.ISupportInitialize)(this.LoaderBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordTE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginTE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private CoreClient.ControlExtensions.TextEditControl LoginTE;
-        private CoreClient.ControlExtensions.TextEditControl PasswordTE;
         private CoreClient.StyleExtensions.Controls.BaseStyledButton AuthorizeButton;
         private new CoreClient.StyleExtensions.Controls.BaseStyledButton CancelButton;
-        private System.Windows.Forms.PictureBox LoaderBox;
         private System.ComponentModel.BackgroundWorker BackAuth;
+        private DevExpress.XtraEditors.TextEdit PasswordTE;
+        private DevExpress.XtraEditors.TextEdit LoginTE;
     }
 }

@@ -16,6 +16,7 @@ namespace CoreClient.StyleExtensions
         public static readonly Color ButtonBackgroundColor = Color.FromArgb(0x3b, 0x59, 0x98);
         public static readonly Color ButtonBackgroundAdditionalColor = Color.FromArgb(0x3b, 0x59, 0x98);
         public static readonly Color ButtonForegroundColor = Color.FromArgb(0xDF, 0xE1, 0xEE);
+        public static readonly Color ButtonDisabledBackgroundColor = Color.FromArgb(0x6c, 0x69, 0x60);
 
         public static readonly bool ButtonDefaultUseRippleEffect = true;
         public static readonly bool ButtonDefaultUseDownPressEffectOnClick = false;
@@ -23,5 +24,7 @@ namespace CoreClient.StyleExtensions
 
         public static readonly bool ButtonDefaultRounded = true;
         public static readonly int ButtonDefaultRounding = 100;
+
+        public const string ContactNumberMask = "0-(000)-000-00-00";
     }
 }

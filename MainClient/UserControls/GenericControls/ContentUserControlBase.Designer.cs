@@ -36,9 +36,7 @@
             this.AddButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
             this.CloseViewButton = new CoreClient.StyleExtensions.Controls.BaseStyledButton();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.CollectionView = new System.Windows.Forms.ListView();
             this.ButtonsPanel.SuspendLayout();
-            this.ContentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonsPanel
@@ -52,7 +50,7 @@
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ButtonsPanel.Location = new System.Drawing.Point(0, 0);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(594, 23);
+            this.ButtonsPanel.Size = new System.Drawing.Size(628, 23);
             this.ButtonsPanel.TabIndex = 0;
             // 
             // DeleteButton
@@ -159,7 +157,7 @@
             this.CloseViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseViewButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseViewButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseViewButton.Location = new System.Drawing.Point(494, 0);
+            this.CloseViewButton.Location = new System.Drawing.Point(528, 0);
             this.CloseViewButton.Name = "CloseViewButton";
             this.CloseViewButton.RippleColor = System.Drawing.Color.Black;
             this.CloseViewButton.RoundingEnable = true;
@@ -173,26 +171,11 @@
             // 
             // ContentPanel
             // 
-            this.ContentPanel.Controls.Add(this.CollectionView);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(0, 23);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(594, 421);
+            this.ContentPanel.Size = new System.Drawing.Size(628, 432);
             this.ContentPanel.TabIndex = 1;
-            // 
-            // CollectionView
-            // 
-            this.CollectionView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CollectionView.FullRowSelect = true;
-            this.CollectionView.GridLines = true;
-            this.CollectionView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CollectionView.HideSelection = false;
-            this.CollectionView.Location = new System.Drawing.Point(0, 0);
-            this.CollectionView.Name = "CollectionView";
-            this.CollectionView.Size = new System.Drawing.Size(594, 421);
-            this.CollectionView.TabIndex = 0;
-            this.CollectionView.UseCompatibleStateImageBehavior = false;
-            this.CollectionView.View = System.Windows.Forms.View.Details;
             // 
             // ContentUserControlBase
             // 
@@ -201,10 +184,9 @@
             this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.ButtonsPanel);
             this.Name = "ContentUserControlBase";
-            this.Size = new System.Drawing.Size(594, 444);
+            this.Size = new System.Drawing.Size(628, 455);
             this.Resize += new System.EventHandler(this.ContentUserControlBaseResize);
             this.ButtonsPanel.ResumeLayout(false);
-            this.ContentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,12 +194,11 @@
         #endregion
         private System.Windows.Forms.Label EditMargin;
         private System.Windows.Forms.Label AddMargin;
-        internal System.Windows.Forms.ListView CollectionView;
-        internal CoreClient.StyleExtensions.Controls.BaseStyledButton DeleteButton;
-        internal CoreClient.StyleExtensions.Controls.BaseStyledButton EditButton;
-        internal CoreClient.StyleExtensions.Controls.BaseStyledButton AddButton;
-        internal System.Windows.Forms.Panel ContentPanel;
         internal System.Windows.Forms.Panel ButtonsPanel;
-        internal CoreClient.StyleExtensions.Controls.BaseStyledButton CloseViewButton;
+        public System.Windows.Forms.Panel ContentPanel;
+        public CoreClient.StyleExtensions.Controls.BaseStyledButton DeleteButton;
+        public CoreClient.StyleExtensions.Controls.BaseStyledButton EditButton;
+        public CoreClient.StyleExtensions.Controls.BaseStyledButton AddButton;
+        public CoreClient.StyleExtensions.Controls.BaseStyledButton CloseViewButton;
     }
 }

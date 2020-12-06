@@ -5,6 +5,8 @@ using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
 using CoreClient.StyleExtensions;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MapperCore.MemoryCacheCore;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
@@ -18,8 +20,12 @@ namespace MainClient.Forms
 {
     public partial class AuthForm : Form, IAuthResult
     {
+        #region form settings
+        private IOverlaySplashScreenHandle Loader;
         public AuthForm() => InitializeComponent();
         public bool AuthDialogResult { get; set; }
+
+        #endregion
         #region injecting
         private readonly IMessageInject message;
         private readonly IMapperInject mapper;
@@ -47,17 +53,19 @@ namespace MainClient.Forms
             AuthorizeButton.Enabled = false;
 
 #if DEBUG
-            LoginTE.Value = "admin";
-            PasswordTE.Value = "admin";
+            LoginTE.Text = "admin";
+            PasswordTE.Text = "admin";
+            PasswordTE.Properties.UseSystemPasswordChar = true;
             AuthorizeButton.Enabled = true;
             AuthorizeButton.Select();
 #endif
 
-            LoginTE.SetTextChangedEvent((s, a) => TextChangedEvent(s, a));
-            PasswordTE.SetTextChangedEvent((s, a) => TextChangedEvent(s, a));
+            LoginTE.TextChanged += TextChangedEvent;
+            PasswordTE.TextChanged += TextChangedEvent;
 
-            LoginTE.SetKeyPressEvent((s, a) => KeyEnterPressedEvent(s, a));
-            PasswordTE.SetKeyPressEvent((s, a) => KeyEnterPressedEvent(s, a));
+            LoginTE.KeyPress += KeyEnterPressedEvent;
+            PasswordTE.KeyPress += KeyEnterPressedEvent;
+
             AuthorizeButton.Click += AuthorizeButtonClick;
             MouseDown += AuthFormMouseDown;
         }
@@ -78,10 +86,18 @@ namespace MainClient.Forms
             }
         }
         private void TextChangedEvent(object sender, EventArgs args)
-            => AuthorizeButton.Enabled =
-            !string.IsNullOrEmpty(LoginTE.Value)
-            &&
-            !string.IsNullOrEmpty(PasswordTE.Value);
+        {
+            if (sender is TextEdit edit)
+            {
+                if (edit.Text.Length.Equals(0))
+                    edit.Text = null;
+            }
+            if (sender is TextEdit pass && pass.Name.Equals(nameof(PasswordTE)))
+            {
+                pass.Properties.UseSystemPasswordChar = !pass.Text.Length.Equals(0);
+            }
+            AuthorizeButton.Enabled = !string.IsNullOrEmpty(LoginTE.Text) && !string.IsNullOrEmpty(PasswordTE.Text);
+        }
         #endregion events
         #region check auth methods
         private void AuthorizeButtonClick(object sender, EventArgs e) => BackAuth.RunWorkerAsync();
@@ -89,8 +105,8 @@ namespace MainClient.Forms
         {
             try
             {
-                Invoke((MethodInvoker)(() => LoaderBox.ShowLoader()));
-                UserDataContract user = UsersService.GetUserByLogin(LoginTE.Value).Result;
+                Loader = this.ShowLoader();
+                UserDataContract user = UsersService.GetUserByLogin(LoginTE.Text).Result;
                 if (user.IsNull())
                 {
                     throw new Exception(
@@ -99,7 +115,7 @@ namespace MainClient.Forms
                         "Проверьте данные и повторите попытку.");
                 }
 
-                if (!user.Password.Equals(PasswordTE.Value))
+                if (!user.Password.Equals(PasswordTE.Text))
                 {
                     throw new Exception(
                         "Введенный пароль не совпадает с паролем из БД." +
@@ -114,10 +130,13 @@ namespace MainClient.Forms
             {
                 message.ShowInfo(ex.Message);
             }
+            finally
+            {
+                this.HideLoader(Loader);
+            }
         }
         private void BackAuthRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            LoaderBox.HideLoader();
             if (AuthDialogResult)
             {
                 Close();

@@ -12,15 +12,11 @@ namespace MainClient.UserControls.GenericControls
             BackColor = FormBrushes.WindowBackGroundColor;
             ForeColor = FormBrushes.WindowForegroundColor;
             CloseViewButton.Click += CloseViewButtonClick;
-            CollectionView.BackColor = BackColor;
-            CollectionView.ForeColor = ForeColor;
 
             ButtonsPanel.SetDefaultColorForChildren();
         }
-
         internal readonly IKernel kernel;
         public ContentUserControlBase(IKernel kernel) : this() => this.kernel = kernel;
-
         private void CloseViewButtonClick(object sender, System.EventArgs e) => Parent.Dispose();
         private void ContentUserControlBaseResize(object sender, System.EventArgs e)
         {

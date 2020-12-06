@@ -125,5 +125,21 @@ namespace WCFCore.ServiceContracts
         int DeletePositionPermissions(Guid ID);
 
         #endregion
+        #region clients
+        [OperationContract]
+        IEnumerable<ClientDataContract> GetClientCollection();
+
+        [OperationContract]
+        ClientDataContract GetClientByID(Guid ID);
+
+        [OperationContract]
+        ClientDataContract InsertClient(ClientDataContract client);
+
+        [OperationContract]
+        ClientDataContract UpdateClient(ClientDataContract client);
+
+        [OperationContract]
+        int DeleteClient(ClientDataContract client);
+        #endregion
     }
 }

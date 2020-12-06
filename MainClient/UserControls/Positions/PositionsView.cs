@@ -16,7 +16,7 @@ using WCFCore.DataContracts;
 
 namespace MainClient.UserControls.Positions
 {
-    public partial class PositionsView : ContentUserControlBase
+    public partial class PositionsView : ContentWithListViewUserControlBase
     {
         #region fucking wforms
         public PositionsView() : base() { }
@@ -54,6 +54,16 @@ namespace MainClient.UserControls.Positions
             AddButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("PositionsIns"));
             EditButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("PositionsUpd"));
             DeleteButton.SetVisibleByPermissionStatus(kernel.Get<IPermissionInject>().IsHasPermission("PositionsDel"));
+            CollectionView.SelectedIndexChanged += CollectionView1_SelectedIndexChanged;
+            CollectionView.SelectedIndexChanged += CollectionView2_SelectedIndexChanged;
+        }
+
+        private void CollectionView1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+        }
+
+        private void CollectionView2_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
         }
 
         #endregion

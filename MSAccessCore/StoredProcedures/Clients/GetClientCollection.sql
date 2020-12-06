@@ -1,0 +1,1 @@
+﻿SELECT [Clients].* FROM [Clients];

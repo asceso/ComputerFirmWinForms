@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CoreClient.StyleExtensions.Controls;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 
 namespace CoreClient.ControlExtensions
 {
@@ -105,6 +107,7 @@ namespace CoreClient.ControlExtensions
         /// <param name="comboBoxName">имя созданного комбо бокса</param>
         /// <param name="headerValue">текст заголовка</param>
         /// <param name="tabIndex">индекс табуляции</param>
+        /// <param name="nullText">текст по умолчанию</param>
         /// <param name="style">стиль комбобокса
         /// (по умолчанию - выпадающий список без редактирования)</param>
         /// <param name="itemHeight">высота текстбокса (по умолчанию - 25)</param>
@@ -112,18 +115,21 @@ namespace CoreClient.ControlExtensions
         /// <param name="dock">привязка к стороне, по умолчанию сверху</param>
         public static void CreateComboBoxWithLabel(this Panel panel,
             string comboBoxName, string headerValue, int tabIndex,
-            ComboBoxStyle style = ComboBoxStyle.DropDownList,
+            string nullText = NullString,
+            TextEditStyles style = TextEditStyles.DisableTextEditor,
             int itemHeight = 25, int labelHeight = 25,
             DockStyle dock = DockStyle.Top)
         {
-            panel.Controls.Add(new ComboBox()
+            ComboBoxEdit boxEdit = new ComboBoxEdit()
             {
                 TabIndex = tabIndex,
                 Name = comboBoxName,
-                DropDownStyle = style,
                 Dock = dock,
                 Height = itemHeight
-            });
+            };
+            boxEdit.Properties.TextEditStyle = style;
+            boxEdit.Properties.NullText = nullText;
+            panel.Controls.Add(boxEdit);
             panel.Controls.Add(new Label()
             {
                 Text = headerValue,

@@ -26,5 +26,16 @@ namespace InjectingCoreLibrary.MapperCore.ClientImplementation
                 return Mapper.Map<TIn, TOut>(objectToConvert);
             }
         }
+
+        public TOut Map<TOut>(object objectToConvert) where TOut : class
+        {
+            {
+                if (Mapper == null)
+                {
+                    return null;
+                }
+                return Mapper.Map<TOut>(objectToConvert);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ using WCFCore.DataContracts;
 
 namespace MainClient.UserControls.RequestTypes
 {
-    public partial class RequestTypesView : ContentUserControlBase
+    public partial class RequestTypesView : ContentWithListViewUserControlBase
     {
         #region fucking wforms
         public RequestTypesView() : base() { }

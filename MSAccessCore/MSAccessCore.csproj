@@ -63,6 +63,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="StoredProcedures\Clients\GetClientCollection.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\Clients\InsertClient.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\Clients\DeleteClient.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\Clients\UpdateClient.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="StoredProcedures\Permissions\GetPermissionsCollectionByPosition.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -16,7 +16,7 @@ using WCFCore.DataContracts;
 
 namespace MainClient.UserControls.Users
 {
-    public partial class UsersView : ContentUserControlBase
+    public partial class UsersView : ContentWithListViewUserControlBase
     {
         #region fucking wforms
         public UsersView() : base() { }
@@ -41,6 +41,7 @@ namespace MainClient.UserControls.Users
 
         public UsersView(IKernel kernel) : base(kernel)
         {
+            InitializeComponent();
             CollectionView.MultiSelect = false;
             mapper = kernel.Get<IMapperInject>();
             InitHeaders();
@@ -67,7 +68,7 @@ namespace MainClient.UserControls.Users
             CollectionView.Columns.Add("Фамилия", 100);
             CollectionView.Columns.Add("Отчество", 100);
             CollectionView.Columns.Add("Контактный номер", 150);
-            CollectionView.Columns.Add("Должность", 150);
+            CollectionView.Columns.Add("Должность", 250);
         }
         internal void UpdateCollection(bool modify)
         {

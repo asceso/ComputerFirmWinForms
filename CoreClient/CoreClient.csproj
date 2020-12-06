@@ -56,6 +56,8 @@
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -75,8 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlExtensions\ButtonsExtension.cs" />
+    <Compile Include="ControlExtensions\DictionaryExtension.cs" />
+    <Compile Include="ControlExtensions\IEnumerableExtension.cs" />
+    <Compile Include="ControlExtensions\LoaderExtension.cs" />
     <Compile Include="ControlExtensions\PanelExtesions.cs" />
-    <Compile Include="ControlExtensions\PictureBoxExtension.cs" />
+    <Compile Include="ControlExtensions\StringExtension.cs" />
     <Compile Include="ControlExtensions\TabControlExtension.cs" />
     <Compile Include="ControlExtensions\BooleanExtension.cs" />
     <Compile Include="ControlExtensions\ImageExtension.cs" />
@@ -87,6 +92,7 @@
     <Compile Include="ControlExtensions\TextEditControl.Designer.cs">
       <DependentUpon>TextEditControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="PermissionNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

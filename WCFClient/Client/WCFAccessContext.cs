@@ -27,7 +27,7 @@ namespace WCFClient.Client
         /// </summary>
         private enum SQLFolders
         {
-            Users, UserInfos, Positions, Permissions, RequestTypes
+            Users, UserInfos, Positions, Permissions, RequestTypes, Clients
         }
 
         #endregion
@@ -640,7 +640,98 @@ namespace WCFClient.Client
             => throw new NotImplementedException();
         public int DeletePositionPermissions(Guid ID)
             => throw new NotImplementedException();
+        #endregion
+        #region clients
+        public IEnumerable<ClientDataContract> GetClientCollection()
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.Clients), nameof(GetClientCollection));
+            List<ClientAD> models = GetCollectionFromReader<ClientAD>(reader, nameof(MapClient));
+            return mapper.Map<IEnumerable<ClientDataContract>>(models);
+        }
+        public ClientDataContract GetClientByID(Guid ID) => throw new NotImplementedException();
+        public ClientDataContract InsertClient(ClientDataContract client)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            Dictionary<string, object> parameters = new Dictionary<string, object>(){
+                {"@ID", client.ID },
+                {"@FirstName", client.FirstName },
+                {"@SecondName", client.SecondName },
+                {"@LastName", client.LastName },
+                {"@ContactNumber", client.ContactNumber },
+                {"@IsLead", client.IsLead },
+                {"@IsDeleted", client.IsDeleted }
+            };
+            OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.Clients), nameof(InsertClient), parameters, false);
 
+            if (!cmd.ExecuteNonQuery().Equals(0))
+            {
+                return client;
+            }
+            else
+            {
+                throw new FaultException("При добавлении клиента произошла ошибка");
+            }
+        }
+        public ClientDataContract UpdateClient(ClientDataContract client)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            Dictionary<string, object> parameters = new Dictionary<string, object>(){
+                {"@FirstName", client.FirstName },
+                {"@SecondName", client.SecondName },
+                {"@LastName", client.LastName },
+                {"@ContactNumber", client.ContactNumber },
+                {"@IsLead", client.IsLead },
+                {"@IsDeleted", client.IsDeleted },
+                {"@ID", client.ID },
+            };
+            OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.Clients), nameof(UpdateClient), parameters, false);
+
+            if (!cmd.ExecuteNonQuery().Equals(0))
+            {
+                return client;
+            }
+            else
+            {
+                throw new FaultException("При изменении клиента произошла ошибка");
+            }
+        }
+        public int DeleteClient(ClientDataContract client)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            Dictionary<string, object> parameters = new Dictionary<string, object>(){
+                {"@IsDeleted", true },
+                {"@ID", client.ID },
+            };
+            OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.Clients), nameof(DeleteClient), parameters, false);
+
+            int changes = cmd.ExecuteNonQuery();
+            if (changes.Equals(0))
+            {
+                throw new FaultException("При удалении одного или нескольких клиентов произошла ошибка");
+            }
+
+            return changes;
+        }
+
+        /// <summary>
+        /// Маппер из ридера модель клиента
+        /// </summary>
+        /// <param name="reader">ридер</param>
+        /// <returns>модель клиента</returns>
+        private ClientAD MapClient(OleDbDataReader reader)
+        {
+            return new ClientAD()
+            {
+                ID = new Guid(reader.GetValue(0).ToString()),
+                FirstName = reader.GetValue(1).ToString(),
+                SecondName = reader.GetValue(2).ToString(),
+                LastName = reader.GetValue(3).ToString(),
+                ContactNumber = reader.GetValue(4).ToString(),
+                IsLead = reader.GetBoolean(5),
+                IsDeleted = reader.GetBoolean(6)
+            };
+        }
         #endregion
     }
 }

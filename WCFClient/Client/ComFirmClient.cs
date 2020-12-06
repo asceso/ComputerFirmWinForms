@@ -63,5 +63,12 @@ namespace WCFClient.Client
         public PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission) => Channel.InsertPositionPermissions(position, permission);
         public int DeletePositionPermissions(Guid ID) => Channel.DeletePositionPermissions(ID);
         #endregion
+        #region clients
+        public IEnumerable<ClientDataContract> GetClientCollection() => Channel.GetClientCollection();
+        public ClientDataContract GetClientByID(Guid ID) => Channel.GetClientByID(ID);
+        public ClientDataContract InsertClient(ClientDataContract client) => Channel.InsertClient(client);
+        public ClientDataContract UpdateClient(ClientDataContract client) => Channel.UpdateClient(client);
+        public int DeleteClient(ClientDataContract client) => Channel.DeleteClient(client);
+        #endregion
     }
 }

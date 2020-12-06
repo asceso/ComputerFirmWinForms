@@ -25,6 +25,9 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<PositionPermissionModel, PositionPermissionDataContract>();
             CreateMap<PositionPermissionModel, PositionPermissionDataContract>().ReverseMap();
+
+            CreateMap<ClientModel, ClientDataContract>();
+            CreateMap<ClientModel, ClientDataContract>().ReverseMap();
         }
     }
 }

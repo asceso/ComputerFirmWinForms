@@ -9,5 +9,7 @@ namespace InjectingCoreLibrary.MapperCore.ClientImplementation
         TOut Map<TIn, TOut>(TIn objectToConvert)
             where TIn : class
             where TOut : class;
+
+        TOut Map<TOut>(object objectToConvert) where TOut : class;
     }
 }

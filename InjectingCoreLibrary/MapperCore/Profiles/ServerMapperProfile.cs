@@ -44,6 +44,9 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<PositionPermissionAD, PositionPermissionDataContract>();
             CreateMap<PositionPermissionAD, PositionPermissionDataContract>().ReverseMap();
+
+            CreateMap<ClientAD, ClientDataContract>();
+            CreateMap<ClientAD, ClientDataContract>().ReverseMap();
             #endregion
         }
     }

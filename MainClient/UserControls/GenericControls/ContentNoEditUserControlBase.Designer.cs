@@ -45,7 +45,7 @@
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ButtonsPanel.Location = new System.Drawing.Point(0, 0);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(594, 23);
+            this.ButtonsPanel.Size = new System.Drawing.Size(628, 23);
             this.ButtonsPanel.TabIndex = 1;
             // 
             // SaveAndExitButton
@@ -119,7 +119,7 @@
             this.CloseViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseViewButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseViewButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseViewButton.Location = new System.Drawing.Point(494, 0);
+            this.CloseViewButton.Location = new System.Drawing.Point(528, 0);
             this.CloseViewButton.Name = "CloseViewButton";
             this.CloseViewButton.RippleColor = System.Drawing.Color.Black;
             this.CloseViewButton.RoundingEnable = true;
@@ -137,7 +137,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ButtonsPanel);
             this.Name = "ContentNoEditUserControlBase";
-            this.Size = new System.Drawing.Size(594, 444);
+            this.Size = new System.Drawing.Size(628, 455);
             this.Resize += new System.EventHandler(this.ContentUserControlBaseResize);
             this.ButtonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -5,10 +5,12 @@ using System.Windows.Forms;
 using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
+using CoreClient.StyleExtensions;
+using DevExpress.XtraEditors;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
 using InjectingCoreLibrary.MessagingCore.MessageBox;
-using MainClient.UserControls.GenericControls;
 using MainClient.Forms;
+using MainClient.UserControls.GenericControls;
 using Ninject;
 using WCFCore.DataContracts;
 
@@ -39,7 +41,6 @@ namespace MainClient.UserControls.Users
         private const string PasswordHeader = "Пароль";
         private const string LoginHeader = "Логин";
         private const string ChangePasswordButtonText = "Изменить логин - пароль";
-        private const string ContactNumberMask = "0-(000)-000-00-00";
         #endregion
         #region fields
 
@@ -72,8 +73,8 @@ namespace MainClient.UserControls.Users
         private void InitElements(UserModel model)
         {
             int lastTabulation = 7;
-            ContentPanel.CreateComboBoxWithLabel(PositionComboBox, PositionHeader, lastTabulation--);
-            ContentPanel.CreateTextBoxWithLabel(ContactNumberMaskBox, ContactNumberHeader, lastTabulation--, ContactNumberMask);
+            ContentPanel.CreateComboBoxWithLabel(PositionComboBox, PositionHeader, lastTabulation--, "Выберите должность");
+            ContentPanel.CreateTextBoxWithLabel(ContactNumberMaskBox, ContactNumberHeader, lastTabulation--, FormBrushes.ContactNumberMask);
             ContentPanel.CreateTextBoxWithLabel(LastNameTextBox, LastNameHeader, lastTabulation--);
             ContentPanel.CreateTextBoxWithLabel(SecondNameTextBox, SecondNameHeader, lastTabulation--);
             ContentPanel.CreateTextBoxWithLabel(FirstNameTextBox, FirstNameHeader, lastTabulation--);
@@ -97,8 +98,8 @@ namespace MainClient.UserControls.Users
         #region update positions
         private void UpdatePositionsSource(UserModel model)
         {
-            ComboBox positionCombo = ContentPanel.GetFormControlFromPanel<ComboBox>(PositionComboBox);
-            positionCombo.Items.Clear();
+            ComboBoxEdit positionCombo = ContentPanel.GetFormControlFromPanel<ComboBoxEdit>(PositionComboBox);
+            positionCombo.Properties.Items.Clear();
             if (!model.IsNull() && model.Login.Equals("admin"))
             {
                 PositionModel position = mapper.Map<PositionDataContract, PositionModel>(
@@ -114,7 +115,7 @@ namespace MainClient.UserControls.Users
             }
             foreach (PositionModel item in positions)
             {
-                positionCombo.Items.Add(item.Name);
+                positionCombo.Properties.Items.Add(item);
             }
         }
         #endregion
@@ -143,9 +144,9 @@ namespace MainClient.UserControls.Users
                             break;
                     }
                 }
-                if (item is ComboBox comboBox)
+                if (item is ComboBoxEdit comboBox)
                 {
-                    comboBox.SelectedItem = model.Position.Name;
+                    comboBox.SelectedItem = positions.FirstOrDefault(p => p.ID.Equals(model.Position.ID));
                 }
 
                 if (item is MaskedTextBox maskBox)
@@ -199,7 +200,7 @@ namespace MainClient.UserControls.Users
             }
 
             NewModel.Position = positions
-                .FirstOrDefault(p => p.Name.Equals(ContentPanel.GetFormControlFromPanel<ComboBox>(PositionComboBox).Text));
+                .FirstOrDefault(p => p.Name.Equals(ContentPanel.GetFormControlFromPanel<ComboBoxEdit>(PositionComboBox).Text));
 
             UserDataContract changes = new UserDataContract();
             int selectedModel = baseControl.Models.IndexOf(OldModel);

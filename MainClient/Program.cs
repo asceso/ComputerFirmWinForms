@@ -19,6 +19,7 @@ namespace MainClient
         [STAThread]
         private static void Main()
         {
+            DevExpress.XtraEditors.WindowsFormsSettings.SetPerMonitorDpiAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

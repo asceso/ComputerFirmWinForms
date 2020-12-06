@@ -21,5 +21,7 @@ namespace ApplicationModels
         /// Описание
         /// </summary>
         public string Description { get; set; }
+
+        public override string ToString() => Name;
     }
 }

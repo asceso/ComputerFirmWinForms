@@ -28,6 +28,12 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<ClientModel, ClientDataContract>();
             CreateMap<ClientModel, ClientDataContract>().ReverseMap();
+
+            CreateMap<SaleModel, SalesDataContract>();
+            CreateMap<SaleModel, SalesDataContract>().ReverseMap();
+
+            CreateMap<RepairsRequestModel, RepairsRequestDataContract>();
+            CreateMap<RepairsRequestModel, RepairsRequestDataContract>().ReverseMap();
         }
     }
 }

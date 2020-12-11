@@ -33,15 +33,7 @@ namespace MainClient
             Kernel.Bind<IPermissionInject>().To<PermissionMethods>();
 
             ShellForm BootstrapForm = Kernel.Get<ShellForm>();
-
-            try
-            {
-                Application.Run(BootstrapForm);
-            }
-            catch (Exception ex)
-            {
-                Kernel.Get<IMessageInject>().ShowInfo($"{ex.Message}, {ex.InnerException}", "Ошибка");
-            }
+            Application.Run(BootstrapForm);
         }
     }
 }

@@ -168,5 +168,29 @@
         public const string PositionPermissionDel = nameof(PositionPermissionDel);
 
         #endregion
+
+        #region req repairs -- заявки на ремонт
+
+        /// <summary>
+        /// Получение заявки на ремонт
+        /// </summary>
+        public const string ReqRepairsGet = nameof(ReqRepairsGet);
+
+        /// <summary>
+        /// Добавление заявки на ремонт
+        /// </summary>
+        public const string ReqRepairsIns = nameof(ReqRepairsIns);
+
+        /// <summary>
+        /// Изменение заявки на ремонт
+        /// </summary>
+        public const string ReqRepairsUpd = nameof(ReqRepairsUpd);
+
+        /// <summary>
+        /// Удаление заявки на ремонт
+        /// </summary>
+        public const string ReqRepairsDel = nameof(ReqRepairsDel);
+
+        #endregion
     }
 }

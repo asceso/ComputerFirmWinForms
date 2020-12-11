@@ -46,6 +46,12 @@ namespace InjectingCoreLibrary.MapperCore.Profiles
 
             CreateMap<ClientAD, ClientDataContract>();
             CreateMap<ClientAD, ClientDataContract>().ReverseMap();
+
+            CreateMap<SaleAD, SalesDataContract>();
+            CreateMap<SaleAD, SalesDataContract>().ReverseMap();
+
+            CreateMap<RepairsRequestAD, RepairsRequestDataContract>();
+            CreateMap<RepairsRequestAD, RepairsRequestDataContract>().ReverseMap();
             #endregion
         }
     }

@@ -86,6 +86,7 @@
     <Compile Include="DataContracts\PriceListDataContract.cs" />
     <Compile Include="DataContracts\RepairsRequestDataContract.cs" />
     <Compile Include="DataContracts\RequestTypeDataContract.cs" />
+    <Compile Include="DataContracts\SalesDataContract.cs" />
     <Compile Include="DataContracts\UserDataContract.cs" />
     <Compile Include="DataContracts\UserInfoDataContract.cs" />
     <Compile Include="DataContracts\WarehouseDataContract.cs" />

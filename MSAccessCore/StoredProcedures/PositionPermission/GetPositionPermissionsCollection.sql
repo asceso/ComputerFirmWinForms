@@ -1,0 +1,1 @@
+﻿SELECT [PositionPermission].* FROM [PositionPermission];

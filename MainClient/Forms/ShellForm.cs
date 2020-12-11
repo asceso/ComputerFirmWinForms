@@ -10,6 +10,8 @@ using InjectingCoreLibrary.MapperCore.MemoryCacheCore;
 using MainClient.Properties;
 using MainClient.UserControls.Clients;
 using MainClient.UserControls.Positions;
+using MainClient.UserControls.Requests.Repair;
+using MainClient.UserControls.Requests.Sale;
 using MainClient.UserControls.RequestTypes;
 using MainClient.UserControls.Settings;
 using MainClient.UserControls.Users;
@@ -24,12 +26,12 @@ namespace MainClient.Forms
 
         private enum ControlNames
         {
-            SettingsView, UsersView, PositionsView, RequestTypesView, ClientsView
+            SettingsView, UsersView, PositionsView, RequestTypesView, ClientsView, SalesView, RepairsView
         }
 
         private enum ControlHeaders
         {
-            Настройки, Сотрудники, Должности, Типы_заявок, Клиенты
+            Настройки, Сотрудники, Должности, Типы_заявок, Клиенты, Продажи, Ремонт
         }
         private string GetRusHeaderName(ControlHeaders selectedEnum)
             => Enum.GetName(typeof(ControlHeaders), selectedEnum).Replace("_", " ");
@@ -96,6 +98,8 @@ namespace MainClient.Forms
             PositionsButton.Click += PositionsButtonClick;
             RequestTypesButton.Click += RequestTypesButtonClick;
             ClientsButton.Click += ClientsButtonClick;
+            SalesButton.Click += SalesButtonClick;
+            RepairsButton.Click += RepairsButtonClick;
 
             #endregion
             #region permissions check
@@ -104,6 +108,8 @@ namespace MainClient.Forms
             PositionsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.PositionsGet));
             RequestTypesButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.RequestTypesGet));
             ClientsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.ClientsGet));
+            SalesButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.SalesGet));
+            RepairsButton.SetVisibleByPermissionStatus(permissionManager.IsHasPermission(PermissionNames.RepairRequestGet));
 
             #endregion
         }
@@ -125,6 +131,12 @@ namespace MainClient.Forms
 
         private void ClientsButtonClick(object sender, EventArgs e)
             => SwitchTabButton(nameof(ControlNames.ClientsView), GetRusHeaderName(ControlHeaders.Клиенты));
+
+        private void SalesButtonClick(object sender, EventArgs e)
+            => SwitchTabButton(nameof(ControlNames.SalesView), GetRusHeaderName(ControlHeaders.Продажи));
+
+        private void RepairsButtonClick(object sender, EventArgs e)
+            => SwitchTabButton(nameof(ControlNames.RepairsView), GetRusHeaderName(ControlHeaders.Ремонт));
 
         #endregion
         #endregion
@@ -176,6 +188,10 @@ namespace MainClient.Forms
                     return new RequestTypesView(kernel);
                 case nameof(ControlNames.ClientsView):
                     return new ClientsView(kernel);
+                case nameof(ControlNames.SalesView):
+                    return new SalesView(kernel);
+                case nameof(ControlNames.RepairsView):
+                    return new RepairsView(kernel);
             }
             return null;
         }

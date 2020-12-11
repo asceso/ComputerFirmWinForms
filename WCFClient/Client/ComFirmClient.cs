@@ -58,10 +58,19 @@ namespace WCFClient.Client
             => Channel.DeletePermission(permission);
         #endregion
         #region position permissions
-        public IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection() => Channel.GetPositionPermissionsCollection();
-        public IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID) => Channel.GetPositionPermissionsCollectionByUserID(UserID);
-        public PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission) => Channel.InsertPositionPermissions(position, permission);
-        public int DeletePositionPermissions(Guid ID) => Channel.DeletePositionPermissions(ID);
+
+        public IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection()
+            => Channel.GetPositionPermissionsCollection();
+
+        public IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID)
+            => Channel.GetPositionPermissionsCollectionByUserID(UserID);
+
+        public PositionPermissionDataContract InsertPositionPermissions(PositionPermissionDataContract positionPermission)
+            => Channel.InsertPositionPermissions(positionPermission);
+
+        public int DeletePositionPermissions(Guid ID)
+            => Channel.DeletePositionPermissions(ID);
+
         #endregion
         #region clients
         public IEnumerable<ClientDataContract> GetClientCollection() => Channel.GetClientCollection();
@@ -69,6 +78,14 @@ namespace WCFClient.Client
         public ClientDataContract InsertClient(ClientDataContract client) => Channel.InsertClient(client);
         public ClientDataContract UpdateClient(ClientDataContract client) => Channel.UpdateClient(client);
         public int DeleteClient(ClientDataContract client) => Channel.DeleteClient(client);
+        #endregion
+        #region req repairs
+        public IEnumerable<RepairsRequestDataContract> GetRepairsRequestCollection()
+            => Channel.GetRepairsRequestCollection();
+        public RepairsRequestDataContract InsertRepairRequest(RepairsRequestDataContract request)
+            => Channel.InsertRepairRequest(request);
+        public RepairsRequestDataContract UpdateRepairRequest(RepairsRequestDataContract request)
+            => Channel.UpdateRepairRequest(request);
         #endregion
     }
 }

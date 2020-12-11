@@ -3,6 +3,7 @@ using System.Linq;
 using ApplicationModels;
 using CoreClient.ControlExtensions;
 using CoreClient.StyleExtensions;
+using DevExpress.XtraEditors;
 using MainClient.UserControls.GenericControls;
 using Ninject;
 

@@ -65,7 +65,7 @@
             this.SaveAndExitButton.Name = "SaveAndExitButton";
             this.SaveAndExitButton.RippleColor = System.Drawing.Color.Black;
             this.SaveAndExitButton.RoundingEnable = true;
-            this.SaveAndExitButton.Size = new System.Drawing.Size(133, 23);
+            this.SaveAndExitButton.Size = new System.Drawing.Size(201, 23);
             this.SaveAndExitButton.TabIndex = 2;
             this.SaveAndExitButton.Text = "Сохранить и закрыть";
             this.SaveAndExitButton.TextHover = null;

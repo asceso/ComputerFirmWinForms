@@ -1,52 +1,55 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
-namespace ApplicationModels
+namespace WCFCore.DataContracts
 {
     /// <summary>
-    /// Модель продажи
+    /// Модель записи продаж
     /// </summary>
-    public class SaleModel
+    [DataContract]
+    public class SalesDataContract
     {
         /// <summary>
-        /// ИД
+        /// ИД записи
         /// </summary>
+        [DataMember]
         public Guid ID { get; set; }
 
-        [Display(Name = "Номер продажи")]
         /// <summary>
         /// Номер продажи
         /// </summary>
+        [DataMember]
         public string SaleNumber { get; set; }
 
         /// <summary>
-        /// Дата и время продажи
+        /// Дата продажи
         /// </summary>
-        [Display(Name = "Дата продажи")]
+        [DataMember]
         public DateTime SaleDate { get; set; }
 
         /// <summary>
-        /// Сотрудник выполнивший продажу
+        /// Ссылка на продавца
         /// </summary>
-        [Display(Name = "Продавец")]
-        public UserModel Seller { get; set; }
+        [DataMember]
+        public UserDataContract Seller { get; set; }
 
         /// <summary>
-        /// ИД Записи из прайс листа
+        /// Ссылка на прайс лист
         /// </summary>
-        [Display(Name = "Позиция прайс листа")]
-        public PriceListModel PriceList { get; set; }
+        [DataMember]
+        public PriceListDataContract PriceList { get; set; }
 
         /// <summary>
         /// Количество
         /// </summary>
-        [Display(Name = "Количество")]
+        [DataMember]
         public int PositionCount { get; set; }
 
         /// <summary>
         /// Закрыта или нет
         /// </summary>
-        [Display(Name = "Заявка закрыта")]
+        [DataMember]
         public bool IsClosed { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace WCFProxy.Proxy
         public static async Task<TypeReturn> UseTunellProxy<TypeReturn>(Func<ComFirmClient, TypeReturn> func)
         {
             NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
+            binding.SendTimeout = new TimeSpan(0, 2, 0);
             ComFirmClient client = null;
             try
             {
@@ -20,13 +21,12 @@ namespace WCFProxy.Proxy
             }
             catch
             {
-                client?.Abort();
+                client.Abort();
                 throw;
-
             }
             finally
             {
-                client?.Close();
+                client.Close();
             }
         }
     }

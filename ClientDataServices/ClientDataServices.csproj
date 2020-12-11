@@ -49,6 +49,7 @@
     <Compile Include="PositionPermissionService.cs" />
     <Compile Include="PositionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReqRepairsService.cs" />
     <Compile Include="RequestTypesService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

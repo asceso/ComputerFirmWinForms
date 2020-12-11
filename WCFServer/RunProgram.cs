@@ -4,13 +4,14 @@ using System.Linq;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.ServiceModel.Dispatcher;
 using InjectingCoreLibrary.MapperCore.ServerImplementation;
 using WCFClient.Client;
 using WCFCore.ServiceContracts;
 
 namespace WCFServer
 {
-    internal class Program
+    internal class RunProgram
     {
         private static void Main(string[] args)
         {

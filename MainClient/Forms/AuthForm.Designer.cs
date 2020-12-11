@@ -44,22 +44,26 @@
             // 
             // PasswordTE
             // 
-            this.PasswordTE.Location = new System.Drawing.Point(12, 49);
+            this.PasswordTE.Location = new System.Drawing.Point(11, 47);
             this.PasswordTE.Name = "PasswordTE";
+            this.PasswordTE.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PasswordTE.Properties.Appearance.Options.UseFont = true;
             this.PasswordTE.Properties.Appearance.Options.UseTextOptions = true;
             this.PasswordTE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.PasswordTE.Properties.NullText = "Введите пароль";
-            this.PasswordTE.Size = new System.Drawing.Size(276, 20);
+            this.PasswordTE.Size = new System.Drawing.Size(276, 26);
             this.PasswordTE.TabIndex = 5;
             // 
             // LoginTE
             // 
-            this.LoginTE.Location = new System.Drawing.Point(12, 12);
+            this.LoginTE.Location = new System.Drawing.Point(11, 10);
             this.LoginTE.Name = "LoginTE";
+            this.LoginTE.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginTE.Properties.Appearance.Options.UseFont = true;
             this.LoginTE.Properties.Appearance.Options.UseTextOptions = true;
             this.LoginTE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.LoginTE.Properties.NullText = "Введите логин";
-            this.LoginTE.Size = new System.Drawing.Size(276, 20);
+            this.LoginTE.Size = new System.Drawing.Size(276, 26);
             this.LoginTE.TabIndex = 4;
             // 
             // CancelButton

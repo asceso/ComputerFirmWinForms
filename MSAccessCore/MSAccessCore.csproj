@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="StoredProcedures\Clients\GetClientByID.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="StoredProcedures\Clients\GetClientCollection.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -84,6 +87,9 @@
     <Content Include="StoredProcedures\PositionPermission\DeletePositionPermissions.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="StoredProcedures\PositionPermission\GetPositionPermissionsCollection.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="StoredProcedures\PositionPermission\InsertPositionPermissions.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -103,6 +109,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\Positions\GetPositionsCollection.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StoredProcedures\ReqRepairs\GetRepairsRequestCollection.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\RequestTypes\DeleteRequestType.sql">

@@ -49,6 +49,6 @@ namespace WCFCore.DataContracts
         /// <summary>
         /// Закрыта заявка или нет
         /// </summary>
-        public bool IsClosed { get; set; }
+        public string State { get; set; }
     }
 }

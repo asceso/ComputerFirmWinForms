@@ -31,5 +31,7 @@ namespace ApplicationModels
         ///  Должность
         /// </summary>
         public PositionModel Position { get; set; }
+
+        public override string ToString() => $"{UserInfo.GetFullName()}, {Position.Name}";
     }
 }

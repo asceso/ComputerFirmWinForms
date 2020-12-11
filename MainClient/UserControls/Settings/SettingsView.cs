@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Windows.Forms;
 using ApplicationModels;
 using ClientDataServices;
 using CoreClient.ControlExtensions;
+using CoreClient.StyleExtensions;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraSplashScreen;
 using InjectingCoreLibrary.MapperCore.ClientImplementation;
+using InjectingCoreLibrary.MessagingCore.MessageBox;
 using InjectingCoreLibrary.SettingsCore;
 using InjectingCoreLibrary.SettingsCore.Models;
 using MainClient.UserControls.GenericControls;
 using Ninject;
+using WCFCore.DataContracts;
 
 namespace MainClient.UserControls.Settings
 {
@@ -21,7 +26,10 @@ namespace MainClient.UserControls.Settings
         public SettingsView() : base() { }
         #endregion
         #region fields
+        private IOverlaySplashScreenHandle Loader;
+        private BindingSource binding;
         private readonly ISettingsInject settings;
+        private readonly IMessageInject message;
         private readonly IMapperInject mapper;
 
         private SettingsModel settingsModel;
@@ -29,6 +37,16 @@ namespace MainClient.UserControls.Settings
 
         private List<PositionModel> positions;
         private List<RequestTypeModel> requestTypes;
+        private List<PermissionModel> permissions;
+
+        private List<PositionPermissionModel> positionPermissionsModels;
+        public List<PositionPermissionModel> PositionPermissionModels
+        {
+            get => positionPermissionsModels ??= new List<PositionPermissionModel>();
+            set => positionPermissionsModels = value;
+        }
+        public PositionPermissionModel SelectedModel { get; set; }
+
         #endregion
         #region ctor
 
@@ -37,31 +55,65 @@ namespace MainClient.UserControls.Settings
             InitializeComponent();
             settings = kernel.Get<ISettingsInject>();
             mapper = kernel.Get<IMapperInject>();
+            message = kernel.Get<IMessageInject>();
             UpdateComboBoxes();
+            mainLayoutPanel.SetDefaultColorForChildren();
+            AddPositionPermissionButton.SetDefaultColor();
+            DeletePositionPermissionButton.SetDefaultColor();
             settingsModel = settings.ReadConfig();
+            TechPosition.SelectedItem = positions.FirstOrDefault(p=>p.Name.Equals(settingsModel.TechnPositionName));
 
             SaveButton.Click += SaveButtonClick;
             SaveAndExitButton.Click += SaveAndExitClick;
+            AddPositionPermissionButton.Click += AddPositionPermissionButtonClick;
+            DeletePositionPermissionButton.Click += DeletePositionPermissionButtonClick;
         }
         #endregion
         #region update sources
+
         private void UpdateComboBoxes()
         {
-            //get sources
+            #region get sources
+
             positions = mapper.Map<List<PositionModel>>(PositionsService.GetPositionsCollection().Result.ToList().Where(p => !p.Name.Equals("Администратор")));
             requestTypes = mapper.Map<List<RequestTypeModel>>(RequestTypesService.GetRequestTypeCollection().Result.ToList());
+            permissions = mapper.Map<List<PermissionModel>>(PermissionsService.GetPermissionsCollection().Result.ToList());
 
-            foreach (PositionModel position in positions)
-            {
-                PositionComboBox.Properties.Items.Add(position);
-            }
-            foreach (RequestTypeModel requestType in requestTypes)
-            {
-                RequestTypesCheckedComboBox.Properties.Items.Add(requestType);
-            }
+            #endregion
+            #region fill sources
+
+            TechPosition.Properties.Items.AddRange(positions.ToArray());
+            PositionComboBox.Properties.Items.AddRange(positions.ToArray());
+            AddingPositionCB.Properties.Items.AddRange(positions.ToArray());
+            RequestTypesCheckedComboBox.Properties.Items.AddRange(requestTypes.ToArray());
+            AddingPermissionCB.Properties.Items.AddRange(permissions.ToArray());
+
+            #endregion
+            #region observe data grid
+
+            PositionPermissionModels = mapper.Map<List<PositionPermissionModel>>(PositionPermissionService.GetPositionPermissionsCollection().Result).ToList();
+
+            binding = new BindingSource { DataSource = PositionPermissionModels };
+            binding.CurrentChanged += Bind_CurrentChanged;
+            PositionPermissionsGrid.DataSource = binding;
+
+            #endregion
         }
+
+        #endregion
+        #region observable collection events
+
+        private void Bind_CurrentChanged(object sender, System.EventArgs e)
+        {
+            if (!(sender is BindingSource bindingSource)) return;
+            SelectedModel = bindingSource.Current as PositionPermissionModel;
+            DeletePositionPermissionButton.Enabled = !SelectedModel.IsNull();
+        }
+
         #endregion
         #region control events
+        private void TechPositionSelectedIndexChanged(object sender, EventArgs e)
+            => settingsModel.TechnPositionName = (TechPosition.SelectedItem as PositionModel).Name;
         private void PositionComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             RequestTypesCheckedComboBox.Enabled = !PositionComboBox.SelectedIndex.Equals(-1);
@@ -116,6 +168,71 @@ namespace MainClient.UserControls.Settings
             SaveButton.PerformClick();
             CloseViewButton.PerformClick();
         }
+        private async void DeletePositionPermissionButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Loader = this.ShowLoader();
+                PositionPermissionsGrid.BeginUpdate();
+
+                if (SelectedModel.IsNull())
+                {
+                    return;
+                }
+
+                PositionPermissionModels.Remove(SelectedModel);
+                await PositionPermissionService.DeletePositionPermissions(SelectedModel.ID);
+                SelectedModel = null;
+                DeletePositionPermissionButton.Enabled = !SelectedModel.IsNull();
+            }
+            catch (Exception ex)
+            {
+                message.ShowInfo(ex.Message);
+            }
+            finally
+            {
+                PositionPermissionsGrid.EndUpdate();
+                this.HideLoader(Loader);
+            }
+        }
+        private void AddPositionPermissionButtonClick(object sender, EventArgs e)
+        {
+            Loader = this.ShowLoader();
+            PositionPermissionsGrid.BeginUpdate();
+
+            PositionPermissionModel model = new PositionPermissionModel()
+            {
+                ID = Guid.NewGuid(),
+                Position = (PositionModel)AddingPositionCB.SelectedItem,
+                Permission = (PermissionModel)AddingPermissionCB.SelectedItem
+            };
+            try
+            {
+                PositionPermissionModels.Add(model);
+
+                model = mapper.Map<PositionPermissionModel>(PositionPermissionService.InsertPositionPermissions(
+                        mapper.Map<PositionPermissionDataContract>(model)).Result);
+
+                SelectedModel = binding.Current as PositionPermissionModel;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is FaultException fe)
+                {
+                    if (fe.Code.Name.Equals("Insert"))
+                    {
+                        PositionPermissionModels.Remove(model);
+                    }
+                    message.ShowInfo(fe.Message);
+                }
+            }
+            finally
+            {
+                PositionPermissionsGrid.EndUpdate();
+                this.HideLoader(Loader);
+            }
+        }
         #endregion
+
     }
 }

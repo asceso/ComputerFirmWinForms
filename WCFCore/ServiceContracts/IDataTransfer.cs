@@ -119,7 +119,7 @@ namespace WCFCore.ServiceContracts
         IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID);
 
         [OperationContract]
-        PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission);
+        PositionPermissionDataContract InsertPositionPermissions(PositionPermissionDataContract positionPermission);
 
         [OperationContract]
         int DeletePositionPermissions(Guid ID);
@@ -140,6 +140,16 @@ namespace WCFCore.ServiceContracts
 
         [OperationContract]
         int DeleteClient(ClientDataContract client);
+        #endregion
+        #region req repairs
+        [OperationContract]
+        IEnumerable<RepairsRequestDataContract> GetRepairsRequestCollection();
+
+        [OperationContract]
+        RepairsRequestDataContract InsertRepairRequest(RepairsRequestDataContract request);
+
+        [OperationContract]
+        RepairsRequestDataContract UpdateRepairRequest(RepairsRequestDataContract request);
         #endregion
     }
 }

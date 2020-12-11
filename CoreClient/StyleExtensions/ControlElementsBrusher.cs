@@ -12,7 +12,7 @@ namespace CoreClient.StyleExtensions
                 if (item is BaseStyledButton button)
                 {
                     //colors
-                    button.BackColor = FormBrushes.ButtonBackgroundColor;
+                    button.BackColor = button.Enabled ? FormBrushes.ButtonBackgroundColor : FormBrushes.ButtonDisabledBackgroundColor;
                     button.BackColorAdditional = FormBrushes.ButtonBackgroundAdditionalColor;
                     button.ForeColor = FormBrushes.ButtonForegroundColor;
                     button.EnabledChanged += BaseButtonEnabledChanged;
@@ -32,7 +32,7 @@ namespace CoreClient.StyleExtensions
         public static void SetDefaultColor(this BaseStyledButton button)
         {
             //colors
-            button.BackColor = FormBrushes.ButtonBackgroundColor;
+            button.BackColor = button.Enabled ? FormBrushes.ButtonBackgroundColor : FormBrushes.ButtonDisabledBackgroundColor;
             button.BackColorAdditional = FormBrushes.ButtonBackgroundAdditionalColor;
             button.ForeColor = FormBrushes.ButtonForegroundColor;
             button.EnabledChanged += BaseButtonEnabledChanged;

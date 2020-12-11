@@ -13,6 +13,7 @@ namespace InjectingCoreLibrary.SettingsCore.Models
         public string ServiceAddress { get; set; }
         #endregion
         #region app config
+        public string TechnPositionName { get; set; }
         public Dictionary<Guid, List<Guid>> PositionToRequestTypeListDictionary { get; set; }
         #endregion
         public object Clone() => MemberwiseClone();

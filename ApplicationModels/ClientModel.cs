@@ -54,5 +54,7 @@ namespace ApplicationModels
         /// </summary>
         /// <returns>ФИО</returns>
         public string GetFullName() => $"{SecondName} {FirstName} {LastName}";
+
+        public override string ToString() => GetFullName();
     }
 }

@@ -26,7 +26,7 @@ namespace WCFClient.Client
         /// <summary>
         /// Названия папок
         /// </summary>
-        private enum SQLFolders { Users, UserInfos, Positions, Permissions, RequestTypes, Clients, PositionPermission }
+        private enum SQLFolders { Users, UserInfos, Positions, Permissions, RequestTypes, Clients, PositionPermission, ReqRepairs }
 
         #endregion
         #region ctor
@@ -164,7 +164,7 @@ namespace WCFClient.Client
         public UserDataContract GetUserDataByID(Guid ID)
         {
             using AccessConnector connector = new AccessConnector(ConnectionString);
-            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.Users), nameof(GetUserDataByLogin),
+            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.Users), nameof(GetUserDataByID),
                 new Dictionary<string, object> {
                     { "@ID", ID }
                 });
@@ -645,20 +645,52 @@ namespace WCFClient.Client
         #endregion
         #region position permissions -- Реализованно
 
-        public PositionPermissionDataContract InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission)
+        public IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection()
         {
+            var positions = mapper.Map<List<PositionAD>>(GetPositionsCollection().ToList());
+            var permissions = mapper.Map<List<PermissionAD>>(GetPermissionsCollection().ToList());
+
             using AccessConnector connector = new AccessConnector(ConnectionString);
-            Guid tempGuid = Guid.NewGuid();
+            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.PositionPermission), nameof(GetPositionPermissionsCollection));
+            List<PositionPermissionAD> models = GetCollectionFromReader<PositionPermissionAD>(reader, nameof(MapPositionPermission));
+
+            foreach (var model in models)
+            {
+                foreach (var position in positions)
+                {
+                    if (model.Position.ID.Equals(position.ID))
+                    {
+                        model.Position = mapper.Map<PositionAD>(position);
+                    }
+                }
+                foreach (var permission in permissions)
+                {
+                    if (model.Permission.ID.Equals(permission.ID))
+                    {
+                        model.Permission = mapper.Map<PermissionAD>(permission);
+                    }
+                }
+            }
+
+            return mapper.Map<IEnumerable<PositionPermissionDataContract>>(models);
+        }
+        public PositionPermissionDataContract InsertPositionPermissions(PositionPermissionDataContract positionPermission)
+        {
+            if (GetPositionPermissionsCollection().Any(pp => pp.Position.ID.Equals(positionPermission.Position.ID) &&
+                                                            pp.Permission.ID.Equals(positionPermission.Permission.ID)))
+                throw new FaultException("Связь для данных должности - разрешения уже имеется в базе данных.", new FaultCode("Insert"));
+
+            using AccessConnector connector = new AccessConnector(ConnectionString);
             Dictionary<string, object> parameters = new Dictionary<string, object>(){
-                {"@ID", tempGuid },
-                {"@PositionID", position.ID },
-                {"@PermissionID", permission.ID }
+                {"@ID", positionPermission.ID },
+                {"@PositionID", positionPermission.Position.ID },
+                {"@PermissionID", positionPermission.Permission.ID }
             };
             OleDbCommand cmd = (OleDbCommand)CreateCommand(connector, nameof(SQLFolders.PositionPermission), nameof(InsertPositionPermissions), parameters, false);
 
             if (!cmd.ExecuteNonQuery().Equals(0))
             {
-                return new PositionPermissionDataContract() { ID = tempGuid, Position = position, Permission = permission };
+                return positionPermission;
             }
             else
             {
@@ -683,14 +715,31 @@ namespace WCFClient.Client
         #region obsolete
 
         [Obsolete(NotUsedMethod, true)]
-        public IEnumerable<PositionPermissionDataContract> GetPositionPermissionsCollection()
-            => throw new NotImplementedException();
-
-        [Obsolete(NotUsedMethod, true)]
         public IEnumerable<PermissionDataContract> GetPositionPermissionsCollectionByUserID(Guid UserID)
             => throw new NotImplementedException();
 
         #endregion
+
+        /// <summary>
+        /// Маппер из ридера модель разрешения
+        /// </summary>
+        /// <param name="reader">ридер</param>
+        /// <returns>модель разрешения</returns>
+        private PositionPermissionAD MapPositionPermission(OleDbDataReader reader)
+        {
+            return new PositionPermissionAD()
+            {
+                ID = new Guid(reader.GetValue(0).ToString()),
+                Position = new PositionAD()
+                {
+                    ID = new Guid(reader.GetValue(1).ToString())
+                },
+                Permission = new PermissionAD()
+                {
+                    ID = new Guid(reader.GetValue(2).ToString())
+                },
+            };
+        }
 
         #endregion
         #region clients - Реализованно
@@ -747,11 +796,18 @@ namespace WCFClient.Client
                 throw new FaultException("При изменении клиента произошла ошибка");
             }
         }
+        public ClientDataContract GetClientByID(Guid ID)
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.Clients), nameof(GetClientByID),
+                new Dictionary<string, object> {
+                    { "@ID", ID }
+                });
+            ClientAD model = GetSingleFromReader<ClientAD>(reader, nameof(MapClient));
+            return mapper.Map<ClientDataContract>(model);
+        }
 
         #region obsolete
-
-        [Obsolete(NotUsedMethod, true)]
-        public ClientDataContract GetClientByID(Guid ID) => throw new NotImplementedException();
 
         [Obsolete(NotUsedMethod, true)]
         public int DeleteClient(ClientDataContract client)
@@ -792,6 +848,44 @@ namespace WCFClient.Client
                 IsDeleted = reader.GetBoolean(6)
             };
         }
+
+        #endregion
+        #region req repairs
+
+        public IEnumerable<RepairsRequestDataContract> GetRepairsRequestCollection()
+        {
+            using AccessConnector connector = new AccessConnector(ConnectionString);
+            OleDbDataReader reader = (OleDbDataReader)CreateCommand(connector, nameof(SQLFolders.ReqRepairs), nameof(GetRepairsRequestCollection));
+            List<RepairsRequestAD> models = GetCollectionFromReader<RepairsRequestAD>(reader, nameof(MapReqRepair));
+            return mapper.Map<IEnumerable<RepairsRequestDataContract>>(models);
+        }
+        public RepairsRequestDataContract InsertRepairRequest(RepairsRequestDataContract request) => throw new NotImplementedException();
+        public RepairsRequestDataContract UpdateRepairRequest(RepairsRequestDataContract request) => throw new NotImplementedException();
+
+        /// <summary>
+        /// Маппер из ридера модель клиента
+        /// </summary>
+        /// <param name="reader">ридер</param>
+        /// <returns>модель клиента</returns>
+        private RepairsRequestAD MapReqRepair(OleDbDataReader reader)
+        {
+            var user = mapper.Map<UserAD>(GetUserDataByID(reader.GetGuid(4)));
+            var reqType = mapper.Map<RequestTypeAD>(GetRequestTypeByID(reader.GetGuid(5)));
+            var client = mapper.Map<ClientAD>(GetClientByID(reader.GetGuid(6)));
+
+            return new RepairsRequestAD()
+            {
+                ID = new Guid(reader.GetValue(0).ToString()),
+                RepairsNumber = reader.GetValue(1).ToString(),
+                OpenedDate = (DateTime)reader.GetValue(2),
+                TargetDate = (DateTime)reader.GetValue(3),
+                TargetUser = user,
+                RequestType = reqType,
+                TargetClient = client,
+                State = reader.GetValue(7).ToString()
+            };
+        }
+
         #endregion
     }
 }

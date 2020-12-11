@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WCFCore.DataContracts;
 using WCFProxy.Proxy;
@@ -11,13 +12,20 @@ namespace ClientDataServices
     public static class PositionPermissionService
     {
         /// <summary>
+        /// Получить коллекцию связей должность - разрешение
+        /// </summary>
+        /// <returns>IEnumerable список Position to Permission</returns>
+        public static async Task<IEnumerable<PositionPermissionDataContract>> GetPositionPermissionsCollection()
+            => await TunellProxy.UseTunellProxy(client => client.GetPositionPermissionsCollection());
+
+        /// <summary>
         /// Добавить связь разрешение - должность
         /// </summary>
         /// <param name="position">должность</param>
         /// <param name="permission">разрешение</param>
         /// <returns>контракт данных со связью</returns>
-        public static async Task<PositionPermissionDataContract> InsertPositionPermissions(PositionDataContract position, PermissionDataContract permission)
-            => await TunellProxy.UseTunellProxy(client => client.InsertPositionPermissions(position, permission));
+        public static async Task<PositionPermissionDataContract> InsertPositionPermissions(PositionPermissionDataContract positionPermission)
+            => await TunellProxy.UseTunellProxy(client => client.InsertPositionPermissions(positionPermission));
 
         /// <summary>
         /// Удалить связь разрешение - должность

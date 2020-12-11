@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using InjectingCoreLibrary.SettingsCore.Models;
 using Newtonsoft.Json;
 
@@ -21,7 +22,7 @@ namespace InjectingCoreLibrary.SettingsCore
         public SettingsModel ReadConfig()
         {
             string buffer = string.Empty;
-            using (StreamReader reader = new StreamReader(JsonPath))
+            using (StreamReader reader = new StreamReader(JsonPath, Encoding.UTF8))
             {
                 buffer = reader.ReadToEnd();
             }
@@ -38,7 +39,7 @@ namespace InjectingCoreLibrary.SettingsCore
             try
             {
                 string json = JsonConvert.SerializeObject(settings, Formatting.Indented);
-                using StreamWriter writer = new StreamWriter(JsonPath);
+                using StreamWriter writer = new StreamWriter(new FileStream(JsonPath, FileMode.OpenOrCreate), Encoding.UTF8);
                 writer.Write(json);
             }
             catch (Exception)
